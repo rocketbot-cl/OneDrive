@@ -103,6 +103,25 @@
             },
             "id": "tenant",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "connection",
+            "title": {
+              "es": "Resultado",
+              "en": "Result"
+            },
+            "description": {
+              "es": "Variable donde guardaremos nuestro resultado. Si la conexion es exitosa retornara True, caso contraria sera False",
+              "en": "Variable where we will store our result. If the connection is successful, it will return True, otherwise it will return False"
+            },
+            "help": {
+              "es": "Nombre de variable sin {}",
+              "en": "Variable name without {}"
+            },
+            "remove_vars": true,
+            "id": "res",
+            "css": "col-md-12"
           }
         ]
       },
@@ -201,6 +220,7 @@
               "es": "Nombre de variable sin {}",
               "en": "Variable name without {}"
             },
+            "remove_vars": true,
             "id": "res",
             "css": "col-md-12"
           }
@@ -237,7 +257,7 @@
         "inputs": [
           {
             "type": "input",
-            "placeholder": "res",
+            "placeholder": "id",
             "title": {
               "es": "ID del archivo",
               "en": "File ID"
@@ -315,6 +335,25 @@
             },
             "id": "filename",
             "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "upload",
+            "title": {
+              "es": "Resultado",
+              "en": "Result"
+            },
+            "description": {
+              "es": "Variable donde guardaremos nuestro resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "en": "Variable where we will store our result. If the task is successful, it will return True, otherwise it will return False"
+            },
+            "help": {
+            "es": "Nombre de variable sin {}",
+            "en": "Variable name without {}"
+            },
+            "remove_vars": true,
+            "id": "upload",
+            "css": "col-md-12"
           }
         ]
       },
