@@ -6,7 +6,8 @@
   
 Working with OneDrive functions  
   
-<!-- ![banner](/docs/imgs/Banner_C:\Users\jmsir\Desktop\RB\Rocketbot\modules\OneDrive.png) -->
+![banner](/docs/imgs/Banner_OneDrive.png)
+
 ## Como instalar este módulo
   
 __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
@@ -31,6 +32,7 @@ Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos
 El valor que figurara en {CODE}, copiarlo y utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
 
 Nota: El navegador NO cargara ninguna pagina.
+
 
 ## Descripción de los comandos
 
