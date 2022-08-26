@@ -35,6 +35,7 @@ class OneDrive:
         url, params = self.build_request(auth_code, grant_type)
         response = requests.post(url, data=params)
         json_response = json.loads(response.text)
+        print(json_response)
         self.access_token = json_response['access_token']
         new_refresh_token = json_response['refresh_token']
         self.refresh_token = new_refresh_token
@@ -82,8 +83,13 @@ class OneDrive:
 
         """
 
-        with open(self.path_credentials, 'w') as outfile:
-            json.dump(credentials, outfile)
+        try:
+            with open(self.path_credentials, 'w') as credfile:
+                json.dump(credentials, credfile)
+            return True
+        except Exception as e:
+            print(e)
+            raise e
 
     def get_items(self):
         """ List children in the root of the current user's drive.
@@ -131,7 +137,9 @@ class OneDrive:
         headers = {
             'Authorization': 'Bearer ' + self.access_token
         }
-        fileHandle = open(file_path, "rb")
+        # Before uploading it is necessary to open the file in binary for reading
+        with open(file_path, "rb") as file:
+            fileHandle = file.read()
         filename = file_path.split("/")[-1]
         print(os.sep)
         print(filename)
@@ -140,4 +148,3 @@ class OneDrive:
         response = requests.put(url, data=fileHandle, headers=headers)
         print(response)
         print(response.json())
-        fileHandle.close()

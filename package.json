@@ -1,8 +1,8 @@
 {
-  "author": "Nicolas Liendro",
+  "author": "Nicolas Liendro - Juan Siro",
   "description": "Working with OneDrive functions",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.0",
+  "version": "1.1.0",
   "license": "MIT",
   "homepage": "http://rocketbot.co/",
   "linux": true,
@@ -14,7 +14,8 @@
   },
   "title": {
     "en": "OneDrive",
-    "es": "OneDrive"
+    "es": "OneDrive",
+    "pr": "OneDrive"
   },
   "icon": " data:image/png;base64,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",
   "children": [
@@ -31,6 +32,12 @@
         "title_options": "Seleccione una opción",
         "options": null
       },
+      "pr": {
+        "title": "Definir credenciais",
+        "description": "Defina as credenciais para ter a API disponível",
+        "title_options": "Selecione uma opção",
+        "options": null
+      },
       "form": {
         "css": "modal-lg",
         "inputs": [
@@ -39,11 +46,13 @@
             "placeholder": "Your client_id",
             "title": {
               "es": "client_id:",
-              "en": "client_id:"
+              "en": "client_id:",
+              "pr": "client_id:"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
             "id": "client_id",
             "css": "col-md-12"
@@ -53,11 +62,13 @@
             "placeholder": "Your client_secret",
             "title": {
               "es": "client_secret:",
-              "en": "client_secret:"
+              "en": "client_secret:",
+              "pr": "client_secret:"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
             "id": "client_secret",
             "css": "col-md-12"
@@ -67,11 +78,13 @@
             "placeholder": "http://localhost:5000",
             "title": {
               "es": "redirect_uri",
-              "en": "redirect_uri"
+              "en": "redirect_uri",
+              "pr": "redirect_uri"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
             "id": "redirect_uri",
             "css": "col-md-12"
@@ -81,11 +94,13 @@
             "placeholder": "code",
             "title": {
               "es": "code",
-              "en": "code"
+              "en": "code",
+              "pr": "code"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
             "id": "code",
             "css": "col-md-12"
@@ -95,13 +110,37 @@
             "placeholder": "tenant",
             "title": {
               "es": "tenant",
-              "en": "tenant"
+              "en": "tenant",
+              "pr": "tenant"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
             "id": "tenant",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "connection",
+            "title": {
+              "es": "Resultado",
+              "en": "Result",
+              "pr": "Resultado"
+            },
+            "description": {
+              "es": "Variable para guardar resultado. Si la conexion es exitosa retornara True, caso contraria sera False",
+              "en": "Variable to store result. If the connection is successful, it will return True, otherwise it will return False",
+              "pr": "Variável para armazenar resultado. Se a conexão for bem sucedida retornará True, caso contrário será False"
+            },
+            "help": {
+              "es": "Nombre de variable sin {}",
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
+            },
+            "remove_vars": true,
+            "id": "res",
             "css": "col-md-12"
           }
         ]
@@ -132,6 +171,12 @@
         "title_options": "Seleccione una opción",
         "options": null
       },
+      "pr": {
+        "title": "Listar itens raiz",
+        "description": "Listar itens raiz",
+        "title_options": "Selecione uma opção",
+        "options": null
+      },
       "form": {
         "css": "modal-lg",
         "inputs": [
@@ -140,11 +185,13 @@
             "placeholder": "res",
             "title": {
               "es": "Resultado",
-              "en": "Result"
+              "en": "Result",
+              "pr": "Resultado"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
             "id": "res",
             "css": "col-md-12"
@@ -177,6 +224,12 @@
         "title_options": "Seleccione una opción",
         "options": null
       },
+      "pr": {
+        "title": "Listar itens em uma pasta",
+        "description": "Listar itens em uma pasta",
+        "title_options": "Selecione uma opção",
+        "options": null
+      },
       "form": {
         "css": "modal-lg",
         "inputs": [
@@ -185,7 +238,8 @@
             "placeholder": "res",
             "title": {
               "es": "ID de la carpeta",
-              "en": "Folder ID"
+              "en": "Folder ID",
+              "pr": "ID da pasta"
             },
             "id": "item_id",
             "css": "col-md-12"
@@ -195,12 +249,15 @@
             "placeholder": "res",
             "title": {
               "es": "Resultado",
-              "en": "Result"
+              "en": "Result",
+              "pr": "Resultado"
             },
             "help": {
               "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
+              "en": "Variable name without {}",
+              "pr": "Nome da variável sem {}"
             },
+            "remove_vars": true,
             "id": "res",
             "css": "col-md-12"
           }
@@ -232,15 +289,22 @@
         "title_options": "Seleccione una opción",
         "options": null
       },
+      "pr": {
+        "title": "Baixar arquivo",
+        "description": "Baixar arquivo",
+        "title_options": "Selecione uma opção",
+        "options": null
+      },
       "form": {
         "css": "modal-lg",
         "inputs": [
           {
             "type": "input",
-            "placeholder": "res",
+            "placeholder": "id",
             "title": {
               "es": "ID del archivo",
-              "en": "File ID"
+              "en": "File ID",
+              "pr": "ID do arquivo"
             },
             "id": "item_id",
             "css": "col-md-12"
@@ -248,16 +312,19 @@
           {
             "type": "folder_select",
             "placeholder": {
-              "es": "Ruta a Carpeta",
-              "en": "Path to folder"
+              "es": "Ruta a la carpeta",
+              "en": "Path to folder",
+              "pr": "Caminho da pasta"
             },
             "title": {
               "es": "Seleccionar una carpeta:",
-              "en": "Select a Folder:"
+              "en": "Select a folder:",
+              "pr": "Selecione uma pasta"
             },
             "help": {
               "es": "Ruta a la carpeta",
-              "en": "Path to folder"
+              "en": "Path to folder",
+              "pr": "Caminho da pasta"
             },
             "id": "folder",
             "css": "col-md-6"
@@ -290,6 +357,12 @@
         "title_options": "Seleccione una opción",
         "options": null
       },
+      "pr": {
+      "title": "Subir arquivo",
+      "description": "Subir arquivo",
+      "title_options": "Selecione uma opção",
+      "options": null
+      },
       "form": {
         "css": "modal-lg",
         "inputs": [
@@ -298,7 +371,8 @@
             "placeholder": "res",
             "title": {
               "es": "ID de la carpeta",
-              "en": "Folder ID"
+              "en": "Folder ID",
+              "pr": "ID da pasta"
             },
             "id": "folder_id",
             "css": "col-md-12"
@@ -307,14 +381,38 @@
             "type": "file_select",
             "placeholder": {
               "es": "Ruta del archivo",
-              "en": "Path file"
+              "en": "Path file",
+              "pr": "Caminho de arquivo"
             },
             "title": {
               "es": "Seleccionar un archivo:",
-              "en": "Select a file:"
+              "en": "Select a file:",
+              "pr": "Selecione um arquivo"
             },
             "id": "filename",
             "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "upload",
+            "title": {
+              "es": "Resultado",
+              "en": "Result",
+              "pr": "Resultado"
+            },
+            "description": {
+              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "en": "Variable to store result. If the task is successful, it will return True, otherwise it will return False",
+              "pr": "Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False"
+            },
+            "help": {
+            "es": "Nombre de variable sin {}",
+            "en": "Variable name without {}",
+            "pr": "Nome da variável sem {}"
+            },
+            "remove_vars": true,
+            "id": "upload",
+            "css": "col-md-12"
           }
         ]
       },

@@ -45,6 +45,7 @@ if module == "setCredentials":
     redirect_uri = GetParams("redirect_uri")
     code = GetParams("code")
     tenant = GetParams("tenant")
+    res = GetParams("res")
     credentials_filename = 'credentials.json'
     path_credentials = base_path + "modules" + os.sep + "OneDrive" + os.sep + credentials_filename
     onedrive = OneDrive(client_id=client_id, client_secret=client_secret, tenant=tenant, redirect_uri=redirect_uri,
@@ -60,8 +61,10 @@ if module == "setCredentials":
             grant_type = 'authorization_code'
             auth_code = {'code': code}
             response = onedrive.get_token(auth_code, grant_type)
-        onedrive.create_tokens_file(response)
+        is_connected = onedrive.create_tokens_file(response)
+        SetVar(res,is_connected)
     except Exception as e:
+        SetVar(res, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
@@ -116,9 +119,16 @@ if module == "downloadItem":
 if module == "uploadItem":
     driver_id = GetParams("driver_id")
     filename = GetParams("filename")
+    upload = GetParams("upload")
+    
+    if driver_id == "" or driver_id == None:
+        driver_id = "root"
+    
     try:
         onedrive.upload_item(filename, driver_id)
+        SetVar(upload, True)
     except Exception as e:
+        SetVar(upload, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e

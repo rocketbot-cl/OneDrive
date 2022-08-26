@@ -5,10 +5,14 @@
 # OneDrive
   
 Working with OneDrive functions  
+  
+![banner](/docs/imgs/Banner_OneDrive.png)
 
 ## How to install this module
   
 __Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+
+
 
 ## How to use this module
 
@@ -31,36 +35,49 @@ The value that appears in {CODE}, copy it and use it in the Rocketbot command in
 
 Note: The browser will NOT load any pages.
 
-## Overview
 
-1. Set credentials  
-Set credentials to make available the API
+## Description of the commands
 
-2. List root items  
-List root items
-
-3. List items from a folder  
-List items from a folder
-
-4. Download item  
-Download an item
-
-5. Upload item  
-Upload an item  
-
-
-
-
-----
-### OS
-
-- windows
-- mac
-- linux
-
-### Dependencies
-
-### License
+### Set credentials
   
-![MIT](https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265)  
-[MIT](http://opensource.org/licenses/mit-license.ph)
+Set credentials to make available the API
+|Parameters|Description|example|
+| --- | --- | --- |
+|client_id||Your client_id|
+|client_secret||Your client_secret|
+|redirect_uri||http://localhost:5000|
+|code||code|
+|tenant||tenant|
+|Result|Variable to store result. If the connection is successful, it will return True, otherwise it will return False|connection|
+
+### List root items
+  
+List root items
+|Parameters|Description|example|
+| --- | --- | --- |
+|Result||res|
+
+### List items from a folder
+  
+List items from a folder
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID||res|
+|Result||res|
+
+### Download item
+  
+Download an item
+|Parameters|Description|example|
+| --- | --- | --- |
+|File ID||id|
+|Select a folder||Path to folder|
+
+### Upload item
+  
+Upload an item
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID||res|
+|Select a file||Path file|
+|Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|upload|
