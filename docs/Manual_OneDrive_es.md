@@ -4,10 +4,9 @@
 
 # OneDrive
   
-Working with OneDrive functions  
+Trabajando con funciones de OneDrive  
   
-![banner](/docs/imgs/Banner_OneDrive.png)
-
+![banner](imgs/Banner_OneDrive.png)
 ## Como instalar este módulo
   
 __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
@@ -32,7 +31,6 @@ Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos
 El valor que figurara en {CODE}, copiarlo y utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
 
 Nota: El navegador NO cargara ninguna pagina.
-
 
 ## Descripción de los comandos
 
@@ -70,12 +68,14 @@ Descarga un archivo
 | --- | --- | --- |
 |ID del archivo||id|
 |Seleccionar una carpeta||Ruta a la carpeta|
+|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|download|
 
 ### Subir archivo
   
 Sube un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|ID de la carpeta||res|
+|ID Drive||root; 98CA2CA6789B976|
+|Ruta de guardado||Files/Reports|
 |Seleccionar un archivo||Ruta del archivo|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|upload|

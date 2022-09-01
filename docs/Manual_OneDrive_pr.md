@@ -4,10 +4,9 @@
 
 # OneDrive
   
-Working with OneDrive functions  
+Trabalhando com funções do OneDrive  
   
-![banner](/docs/imgs/Banner_OneDrive.png)
-
+![banner](imgs/Banner_OneDrive.png)
 ## Como instalar este módulo
   
 __Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
@@ -69,12 +68,14 @@ Baixar arquivo
 | --- | --- | --- |
 |ID do arquivo||id|
 |Selecione uma pasta||Caminho da pasta|
+|Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|download|
 
 ### Subir arquivo
   
 Subir arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID da pasta||res|
+|ID Drive||root; 98CA2CA6789B976|
+|Salvar caminho||Files/Reports|
 |Selecione um arquivo||Caminho de arquivo|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|upload|

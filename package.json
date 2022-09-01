@@ -328,6 +328,28 @@
             },
             "id": "folder",
             "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "download",
+            "title": {
+              "es": "Resultado",
+              "en": "Result",
+              "pr": "Resultado"
+            },
+            "description": {
+              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "en": "Variable to store result. If the task is successful, it will return True, otherwise it will return False",
+              "pr": "Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False"
+            },
+            "help": {
+            "es": "Nombre de variable sin {}",
+            "en": "Variable name without {}",
+            "pr": "Nome da variável sem {}"
+            },
+            "remove_vars": true,
+            "id": "download",
+            "css": "col-md-12"
           }
         ]
       },
@@ -368,13 +390,29 @@
         "inputs": [
           {
             "type": "input",
-            "placeholder": "res",
+            "placeholder": "root; 98CA2CA6789B976",
             "title": {
-              "es": "ID de la carpeta",
-              "en": "Folder ID",
-              "pr": "ID da pasta"
+              "es": "ID Drive",
+              "en": "Drive ID",
+              "pr": "ID Drive"
             },
-            "id": "folder_id",
+            "id": "drive_id",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "Files/Reports",
+            "title": {
+              "es": "Ruta de guardado",
+              "en": "Save path",
+              "pr": "Salvar caminho"
+            },
+            "help": {
+              "es": "Ruta dentro de OneDrive, no tener en cuenta 'root'. En caso de no existir la ruta, la creara.",
+              "en": "Route within OneDrive, do not have the account 'root'. In case the route doesn't exist, it will create.",
+              "pr": "Rota dentro do OneDrive, não tener en cuenta 'root'. No caso de não existir la ruta, la creara."
+              },
+            "id": "path",
             "css": "col-md-12"
           },
           {
