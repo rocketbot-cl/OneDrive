@@ -6,13 +6,10 @@
   
 Working with OneDrive functions  
   
-![banner](/docs/imgs/Banner_OneDrive.png)
-
+![banner](imgs/Banner_OneDrive.png)
 ## How to install this module
   
 __Download__ and __install__ the content in 'modules' folder in Rocketbot path  
-
-
 
 ## How to use this module
 
@@ -34,7 +31,6 @@ Replace within the link {tennat}, {client_id} and {redirect_uri}, with the data 
 The value that appears in {CODE}, copy it and use it in the Rocketbot command in the "code" field to make the connection.
 
 Note: The browser will NOT load any pages.
-
 
 ## Description of the commands
 
@@ -72,12 +68,14 @@ Download an item
 | --- | --- | --- |
 |File ID||id|
 |Select a folder||Path to folder|
+|Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|download|
 
 ### Upload item
   
 Upload an item
 |Parameters|Description|example|
 | --- | --- | --- |
-|Folder ID||res|
+|Drive ID||root; 98CA2CA6789B976|
+|Save path||Files/Reports|
 |Select a file||Path file|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|upload|

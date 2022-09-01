@@ -4,7 +4,7 @@
 
 # OneDrive
   
-Working with OneDrive functions  
+Trabalhando com funções do OneDrive  
 
 ## Como instalar este módulo
   

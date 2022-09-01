@@ -109,15 +109,23 @@ if module == "listItems":
 if module == "downloadItem":
     item_id = GetParams("item_id")
     folder = GetParams("folder")
+    download = GetParams("download")
+    
+    if folder == "" or folder == None:
+        raise Exception("Folder path needed!")
+    
     try:
         onedrive.download_item(item_id, folder)
+        SetVar(download, True)
     except Exception as e:
+        SetVar(download, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
 
 if module == "uploadItem":
     driver_id = GetParams("driver_id")
+    path = GetParams("path")
     filename = GetParams("filename")
     upload = GetParams("upload")
     
@@ -125,7 +133,7 @@ if module == "uploadItem":
         driver_id = "root"
     
     try:
-        onedrive.upload_item(filename, driver_id)
+        onedrive.upload_item(filename, driver_id, path)
         SetVar(upload, True)
     except Exception as e:
         SetVar(upload, False)

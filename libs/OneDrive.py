@@ -35,7 +35,6 @@ class OneDrive:
         url, params = self.build_request(auth_code, grant_type)
         response = requests.post(url, data=params)
         json_response = json.loads(response.text)
-        print(json_response)
         self.access_token = json_response['access_token']
         new_refresh_token = json_response['refresh_token']
         self.refresh_token = new_refresh_token
@@ -125,7 +124,6 @@ class OneDrive:
         url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/".format(item_id=item_id)
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
-        print(json_response)
         url_download = json_response['@microsoft.graph.downloadUrl']
         filename = json_response['name']
         response_download = requests.get(url_download, headers=headers)
@@ -133,18 +131,16 @@ class OneDrive:
         with open(folder_path + os.sep + filename, 'wb') as file:
             file.write(response_download.content)
 
-    def upload_item(self, file_path, drive_id):
+    def upload_item(self, file_path, drive_id, folder_path):
         headers = {
-            'Authorization': 'Bearer ' + self.access_token
+            'Authorization': 'Bearer ' + self.access_token,
         }
         # Before uploading it is necessary to open the file in binary for reading
         with open(file_path, "rb") as file:
             fileHandle = file.read()
         filename = file_path.split("/")[-1]
-        print(os.sep)
-        print(filename)
-        url = "https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{filename}:/content".format(
-            drive_id=drive_id, filename=filename)
+        # print(filename)
+        url = "https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{folder_path}/{filename}:/content".format(
+            drive_id=drive_id, filename=filename, folder_path=folder_path)
         response = requests.put(url, data=fileHandle, headers=headers)
-        print(response)
-        print(response.json())
+        # print(response.json())

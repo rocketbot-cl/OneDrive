@@ -4,8 +4,8 @@
 
 # OneDrive
   
-Working with OneDrive functions  
-
+Trabajando con funciones de OneDrive
+ 
 ## Como instalar este módulo
   
 __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
