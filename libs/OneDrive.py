@@ -107,6 +107,24 @@ class OneDrive:
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
         return json_response
+    
+    def get_items_shared_with_me(self):
+        """ List items shred to the current user's drive.
+
+        Create a json with credentials.
+
+        Returns
+        -------
+        dict
+            shared items
+        """
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token
+        }
+        url = "https://graph.microsoft.com/v1.0/me/drive/sharedWithMe"
+        response = requests.get(url, headers=headers)
+        json_response = json.loads(response.text)
+        return json_response
 
     def list_items(self, item_id):
         headers = {

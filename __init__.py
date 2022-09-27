@@ -87,6 +87,24 @@ if module == "getRootItems":
         PrintException()
         raise e
 
+if module == "getItemsSharedWithMe":
+    res = GetParams("res")
+    try:
+        values = onedrive.get_items_shared_with_me()['value']
+        folders = []
+        for folder in values:
+            dict_folder = {
+                'name': folder['name'],
+                'id': folder['id']
+            }
+            folders.append(dict_folder)
+        print(folders)
+        SetVar(res, folders)
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
 if module == "listItems":
     item_id = GetParams("item_id")
     res = GetParams("res")
