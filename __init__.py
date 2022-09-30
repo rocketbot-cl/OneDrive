@@ -37,7 +37,18 @@ from OneDrive import OneDrive
 
 module = GetParams("module")
 
+global mod_OneDrive_session
 global onedrive
+
+session = GetParams("session")
+if not session:
+    session = ''
+
+try:
+    if not mod_OneDrive_session : #type:ignore
+        mod_OneDrive_session = {}
+except NameError:
+    mod_OneDrive_session = {}
 
 if module == "setCredentials":
     client_secret = GetParams("client_secret")
@@ -46,22 +57,28 @@ if module == "setCredentials":
     code = GetParams("code")
     tenant = GetParams("tenant")
     res = GetParams("res")
-    credentials_filename = 'credentials.json'
+    
+    if session == '':
+        credentials_filename = "credentials.json"
+    else:
+        credentials_filename = "credentials_{s}.json".format(s=session)
+    
     path_credentials = base_path + "modules" + os.sep + "OneDrive" + os.sep + credentials_filename
-    onedrive = OneDrive(client_id=client_id, client_secret=client_secret, tenant=tenant, redirect_uri=redirect_uri,
-                        path_credentials=path_credentials)
+    
+    mod_OneDrive_session[session] = OneDrive(client_id=client_id, client_secret=client_secret, tenant=tenant, redirect_uri=redirect_uri, 
+                                             path_credentials=path_credentials)
     try:
         try:
             with open(path_credentials) as json_file:
                 data = json.load(json_file)
             auth_code = {'refresh_token': data['refresh_token']}
             grant_type = 'refresh_token'
-            response = onedrive.get_token(auth_code, grant_type)
+            response = mod_OneDrive_session[session].get_token(auth_code, grant_type)
         except IOError:
             grant_type = 'authorization_code'
             auth_code = {'code': code}
-            response = onedrive.get_token(auth_code, grant_type)
-        is_connected = onedrive.create_tokens_file(response)
+            response = mod_OneDrive_session[session].get_token(auth_code, grant_type)
+        is_connected = mod_OneDrive_session[session].create_tokens_file(response)
         SetVar(res,is_connected)
     except Exception as e:
         SetVar(res, False)
@@ -72,7 +89,7 @@ if module == "setCredentials":
 if module == "getRootItems":
     res = GetParams("res")
     try:
-        values = onedrive.get_items()['value']
+        values = mod_OneDrive_session[session].get_items()['value']
         folders = []
         for folder in values:
             dict_folder = {
@@ -90,7 +107,7 @@ if module == "getRootItems":
 if module == "getItemsSharedWithMe":
     res = GetParams("res")
     try:
-        values = onedrive.get_items_shared_with_me()['value']
+        values = mod_OneDrive_session[session].get_items_shared_with_me()['value']
         folders = []
         for folder in values:
             dict_folder = {
@@ -109,7 +126,7 @@ if module == "listItems":
     item_id = GetParams("item_id")
     res = GetParams("res")
     try:
-        values = onedrive.list_items(item_id)['value']
+        values = mod_OneDrive_session[session].list_items(item_id)['value']
         items = []
         for item in values:
             dict_item = {
@@ -133,7 +150,7 @@ if module == "downloadItem":
         raise Exception("Folder path needed!")
     
     try:
-        onedrive.download_item(item_id, folder)
+        mod_OneDrive_session[session].download_item(item_id, folder)
         SetVar(download, True)
     except Exception as e:
         SetVar(download, False)
@@ -151,7 +168,7 @@ if module == "uploadItem":
         driver_id = "root"
     
     try:
-        onedrive.upload_item(filename, driver_id, path)
+        mod_OneDrive_session[session].upload_item(filename, driver_id, path)
         SetVar(upload, True)
     except Exception as e:
         SetVar(upload, False)

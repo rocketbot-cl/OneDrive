@@ -45,6 +45,7 @@ Establece las credenciales para tener disponible la API
 |code||code|
 |tenant||tenant|
 |Resultado|Variable para guardar resultado. Si la conexion es exitosa retornara True, caso contraria sera False|connection|
+|session||session|
 
 ### Listar items de la raiz
   
@@ -52,6 +53,7 @@ Listar items de la raiz
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Resultado||res|
+|session||session|
 
 ### Listar items de una carpeta
   
@@ -60,6 +62,7 @@ Listar items de una carpeta
 | --- | --- | --- |
 |ID de la carpeta||res|
 |Resultado||res|
+|session||session|
 
 ### Descargar archivo
   
@@ -69,6 +72,7 @@ Descarga un archivo
 |ID del archivo||id|
 |Seleccionar una carpeta||Ruta a la carpeta|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|download|
+|session||session|
 
 ### Subir archivo
   
@@ -79,3 +83,4 @@ Sube un archivo
 |Ruta de guardado||Files/Reports|
 |Seleccionar un archivo||Ruta del archivo|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|upload|
+|session||session|

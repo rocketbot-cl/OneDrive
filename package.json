@@ -142,6 +142,22 @@
             "remove_vars": true,
             "id": "res",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "session",
+              "es": "session",
+              "pr": "session"
+            },
+            "help": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
+            },
+            "id": "session",
+            "css": "col-md-6"
           }
         ]
       },
@@ -195,6 +211,22 @@
             },
             "id": "res",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "session",
+              "es": "session",
+              "pr": "session"
+            },
+            "help": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
+            },
+            "id": "session",
+            "css": "col-md-6"
           }
         ]
       },
@@ -248,6 +280,22 @@
             },
             "id": "res",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "session",
+              "es": "session",
+              "pr": "session"
+            },
+            "help": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
+            },
+            "id": "session",
+            "css": "col-md-6"
           }
         ]
       },
@@ -313,6 +361,22 @@
             "remove_vars": true,
             "id": "res",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "session",
+              "es": "session",
+              "pr": "session"
+            },
+            "help": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
+            },
+            "id": "session",
+            "css": "col-md-6"
           }
         ]
       },
@@ -403,6 +467,22 @@
             "remove_vars": true,
             "id": "download",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "session",
+              "es": "session",
+              "pr": "session"
+            },
+            "help": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
+            },
+            "id": "session",
+            "css": "col-md-6"
           }
         ]
       },
@@ -504,6 +584,22 @@
             "remove_vars": true,
             "id": "upload",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "session",
+              "es": "session",
+              "pr": "session"
+            },
+            "help": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
+            },
+            "id": "session",
+            "css": "col-md-6"
           }
         ]
       },

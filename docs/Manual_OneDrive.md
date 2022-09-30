@@ -45,6 +45,7 @@ Set credentials to make available the API
 |code||code|
 |tenant||tenant|
 |Result|Variable to store result. If the connection is successful, it will return True, otherwise it will return False|connection|
+|session||session|
 
 ### List root items
   
@@ -52,6 +53,7 @@ List root items
 |Parameters|Description|example|
 | --- | --- | --- |
 |Result||res|
+|session||session|
 
 ### List items from a folder
   
@@ -60,6 +62,7 @@ List items from a folder
 | --- | --- | --- |
 |Folder ID||res|
 |Result||res|
+|session||session|
 
 ### Download item
   
@@ -69,6 +72,7 @@ Download an item
 |File ID||id|
 |Select a folder||Path to folder|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|download|
+|session||session|
 
 ### Upload item
   
@@ -79,3 +83,4 @@ Upload an item
 |Save path||Files/Reports|
 |Select a file||Path file|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|upload|
+|session||session|
