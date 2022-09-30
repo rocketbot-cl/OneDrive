@@ -55,6 +55,14 @@ Listar items de la raiz
 |Resultado||res|
 |session||session|
 
+### Listar items compartidos
+  
+Listar los items que me han compartido
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Resultado||res|
+|session||session|
+
 ### Listar items de una carpeta
   
 Listar items de una carpeta

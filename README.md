@@ -10,6 +10,8 @@ Working with OneDrive functions
   
 __Download__ and __install__ the content in 'modules' folder in Rocketbot path  
 
+
+
 ## How to use this module
 
 Before using this module, you need to register your app in the Azure App Registrations portal.
@@ -31,7 +33,9 @@ The value that appears in {CODE}, copy it and use it in the Rocketbot command in
 
 Note: The browser will NOT load any pages.
 
+
 ## Overview
+
 
 1. Set credentials  
 Set credentials to make available the API
@@ -39,13 +43,16 @@ Set credentials to make available the API
 2. List root items  
 List root items
 
-3. List items from a folder  
+3. List shared items  
+List shared with me items
+
+4. List items from a folder  
 List items from a folder
 
-4. Download item  
+5. Download item  
 Download an item
 
-5. Upload item  
+6. Upload item  
 Upload an item  
 
 

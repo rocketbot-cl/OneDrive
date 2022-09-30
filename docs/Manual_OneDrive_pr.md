@@ -53,6 +53,15 @@ Listar itens raiz
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Resultado||res|
+|session||session|
+
+### Listar itens partilhados
+  
+Listar os itens que foram partilhados comigo
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Resultado||res|
+|session||session|
 
 ### Listar itens em uma pasta
   
