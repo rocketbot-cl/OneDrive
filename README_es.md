@@ -33,20 +33,26 @@ Nota: El navegador NO cargara ninguna pagina.
 
 ## Overview
 
+
 1. Establecer credenciales  
 Establece las credenciales para tener disponible la API
 
 2. Listar items de la raiz  
 Listar items de la raiz
 
-3. Listar items de una carpeta  
+3. Listar items compartidos  
+Listar los items que me han compartido
+
+4. Listar items de una carpeta  
 Listar items de una carpeta
 
-4. Descargar archivo  
+5. Descargar archivo  
 Descarga un archivo
 
-5. Subir archivo  
+6. Subir archivo  
 Sube un archivo  
+
+
 
 
 ----

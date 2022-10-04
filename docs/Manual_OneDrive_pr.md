@@ -45,6 +45,7 @@ Defina as credenciais para ter a API disponível
 |code||code|
 |tenant||tenant|
 |Resultado|Variável para armazenar resultado. Se a conexão for bem sucedida retornará True, caso contrário será False|connection|
+|session||session|
 
 ### Listar itens raiz
   
@@ -52,6 +53,15 @@ Listar itens raiz
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Resultado||res|
+|session||session|
+
+### Listar itens partilhados
+  
+Listar os itens que foram partilhados comigo
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Resultado||res|
+|session||session|
 
 ### Listar itens em uma pasta
   
@@ -60,6 +70,7 @@ Listar itens em uma pasta
 | --- | --- | --- |
 |ID da pasta||res|
 |Resultado||res|
+|session||session|
 
 ### Baixar arquivo
   
@@ -69,6 +80,7 @@ Baixar arquivo
 |ID do arquivo||id|
 |Selecione uma pasta||Caminho da pasta|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|download|
+|session||session|
 
 ### Subir arquivo
   
@@ -79,3 +91,4 @@ Subir arquivo
 |Salvar caminho||Files/Reports|
 |Selecione um arquivo||Caminho de arquivo|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|upload|
+|session||session|

@@ -33,19 +33,23 @@ Nota: O navegador NÃO carregará nenhuma página.
 
 ## Overview
 
+
 1. Definir credenciais  
 Defina as credenciais para ter a API disponível
 
 2. Listar itens raiz  
 Listar itens raiz
 
-3. Listar itens em uma pasta  
+3. Listar itens partilhados  
+Listar os itens que foram partilhados comigo
+
+4. Listar itens em uma pasta  
 Listar itens em uma pasta
 
-4. Baixar arquivo  
+5. Baixar arquivo  
 Baixar arquivo
 
-5. Subir arquivo  
+6. Subir arquivo  
 Subir arquivo  
 
 
