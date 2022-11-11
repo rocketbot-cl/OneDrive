@@ -146,8 +146,13 @@ class OneDrive:
         filename = json_response['name']
         response_download = requests.get(url_download, headers=headers)
         # print(response_download.json())
+        
+        if not response_download:
+            return False
+
         with open(folder_path + os.sep + filename, 'wb') as file:
             file.write(response_download.content)
+        return True
 
     def upload_item(self, file_path, drive_id, folder_path):
         headers = {
@@ -162,3 +167,73 @@ class OneDrive:
             drive_id=drive_id, filename=filename, folder_path=folder_path)
         response = requests.put(url, data=fileHandle, headers=headers)
         # print(response.json())
+    
+    def delete_item(self, item_id):
+        """ Moves this item to the Recycle Bin
+
+        :return: Success / Failure
+        :rtype: bool
+        """
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token,
+        }
+        
+        url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}".format(
+            item_id=item_id)
+        
+        response = requests.delete(url, headers=headers)
+        
+        if not response:
+            return False
+
+        return True
+        
+    def move_item(self, item_id, target_id):
+        """ Moves this DriveItem to another Folder.
+        Can't move between different Drives.
+
+        :param target: a Folder, Drive item or Item Id string.
+         If it's a drive the item will be moved to the root folder.
+        :type target: drive.Folder or DriveItem or str
+        :return: Success / Failure
+        :rtype: bool
+        """
+        
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token,
+        }
+        
+        url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}".format(
+            item_id=item_id)
+        
+        # if isinstance(target, Folder):
+        #     target_id = target.object_id
+        # elif isinstance(target, Drive):
+        #     # we need the root folder id
+        #     root_folder = target.get_root_folder()
+        #     if not root_folder:
+        #         return False
+        #     target_id = root_folder.object_id
+        # elif isinstance(target, str):
+        #     target_id = target
+        # else:
+        #     raise ValueError('Target must be a Folder or Drive')
+
+        # if not self.object_id or not target_id:
+        #     raise ValueError(
+        #         'Both self, and target must have a valid object_id.')
+
+        if target_id == 'root':
+            raise ValueError("When moving, target id can't be 'root'")
+
+        # url = self.build_url(
+        #     self._endpoints.get('item').format(id=self.object_id))
+
+        payload = {"parentReference": {"id": "{target_id}".format(target_id=target_id)}}
+        
+        response = requests.patch(url, json=payload, headers=headers)
+        
+        if not response:
+            return False
+
+        return True

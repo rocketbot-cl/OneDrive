@@ -86,6 +86,12 @@ if module == "setCredentials":
         PrintException()
         raise e
 
+# Check that the connection has been stablished before executing any command
+try:
+    mod_OneDrive_session[session]
+except:
+    raise Exception("Must be connected before executing any command...")
+
 if module == "getRootItems":
     res = GetParams("res")
     try:
@@ -94,10 +100,10 @@ if module == "getRootItems":
         for folder in values:
             dict_folder = {
                 'name': folder['name'],
-                'id': folder['id']
+                'id': folder['id'],
+                'parent': folder['parentReference']
             }
             folders.append(dict_folder)
-        print(folders)
         SetVar(res, folders)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
@@ -112,10 +118,9 @@ if module == "getItemsSharedWithMe":
         for folder in values:
             dict_folder = {
                 'name': folder['name'],
-                'id': folder['id']
+                'id': folder['id'],
             }
             folders.append(dict_folder)
-        print(folders)
         SetVar(res, folders)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
@@ -134,7 +139,6 @@ if module == "listItems":
                 'id': item['id']
             }
             items.append(dict_item)
-        print(items)
         SetVar(res, items)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
@@ -148,10 +152,9 @@ if module == "downloadItem":
     
     if folder == "" or folder == None:
         raise Exception("Folder path needed!")
-    
     try:
-        mod_OneDrive_session[session].download_item(item_id, folder)
-        SetVar(download, True)
+        res = mod_OneDrive_session[session].download_item(item_id, folder)
+        SetVar(download, res)
     except Exception as e:
         SetVar(download, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
@@ -168,10 +171,39 @@ if module == "uploadItem":
         driver_id = "root"
     
     try:
-        mod_OneDrive_session[session].upload_item(filename, driver_id, path)
-        SetVar(upload, True)
+        res = mod_OneDrive_session[session].upload_item(filename, driver_id, path)
+        SetVar(upload, res)
     except Exception as e:
         SetVar(upload, False)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "deleteItem":
+    item_id = GetParams("item_id")
+    delete = GetParams("delete")
+        
+    try:
+        res = mod_OneDrive_session[session].delete_item(item_id)
+        SetVar(delete, res)
+    except Exception as e:
+        SetVar(delete, False)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "moveItem":
+    item_id = GetParams("item_id")
+    target_id = GetParams("target_id")
+    moved = GetParams("moved")
+    
+    if target_id == "" or target_id == None:
+        raise Exception("The folder target ID is needed!")
+    try:
+        res = mod_OneDrive_session[session].move_item(item_id, target_id)
+        SetVar(moved, res)
+    except Exception as e:
+        SetVar(moved, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
