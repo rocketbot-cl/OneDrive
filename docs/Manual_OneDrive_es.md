@@ -4,10 +4,9 @@
 
 # OneDrive
   
-Working with OneDrive functions  
+Trabajando con funciones de OneDrive  
   
-![banner](/docs/imgs/Banner_OneDrive.png)
-
+![banner](imgs/Banner_OneDrive.png)
 ## Como instalar este módulo
   
 __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
@@ -21,18 +20,17 @@ Antes de usar este modulo, es necesario registrar tu aplicación en el portal de
 3. En “Tipos de cuenta compatibles” soportados elija:
     a. "Cuentas en cualquier directorio organizativo (cualquier directorio de Azure AD: multiinquilino) y cuentas de Microsoft personales (como Skype o Xbox)" para este caso utilizar  ID Inquilino = common
     b. "Solo cuentas de este directorio organizativo (solo esta cuenta: inquilino único) para este caso utilizar ID Inquilino especifica de la aplicación.
-4. Establezca la uri de redirección (Web) como: https://localhost/ y haga click en "Registrar".
+4. Establezca la uri de redirección (Web) como: https://localhost:5001/ y haga click en "Registrar".
 5. Copie el ID de la aplicación (cliente). Necesitará este valor.
 6. Dentro de "Certificados y secretos", genere un nuevo secreto de cliente. Establezca la caducidad (preferiblemente 24 meses). Copie el VALOR del secreto de cliente creado (NO el ID de Secreto). El mismo se ocultará al cabo de unos minutos.
 7. Dentro de "Permisos de API", haga click en "Agregar un permiso", seleccione "Microsoft Graph", luego "Permisos delegados", busque y seleccione "Files.ReadWrite.All", y por ultimo "Agregar permisos".
 8. Codigo de acceso, generar codigo ingresando al siguiente link:
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
 Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos correspondientes a la applicación creada.
-9. Si la operación tuvo exito, la URL del navedador cambiara por: http://localhost:5000/?code={CODE}&state=12345#!/ 
+9. Si la operación tuvo exito, la URL del navedador cambiara por: http://localhost:5001/?code={CODE}&state=12345#!/ 
 El valor que figurara en {CODE}, copiarlo y utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
 
 Nota: El navegador NO cargara ninguna pagina.
-
 
 ## Descripción de los comandos
 
@@ -47,6 +45,7 @@ Establece las credenciales para tener disponible la API
 |code||code|
 |tenant||tenant|
 |Resultado|Variable para guardar resultado. Si la conexion es exitosa retornara True, caso contraria sera False|connection|
+|session||session|
 
 ### Listar items de la raiz
   
@@ -54,6 +53,15 @@ Listar items de la raiz
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Resultado||res|
+|session||session|
+
+### Listar items compartidos
+  
+Listar los items que me han compartido
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Resultado||res|
+|session||session|
 
 ### Listar items de una carpeta
   
@@ -62,6 +70,7 @@ Listar items de una carpeta
 | --- | --- | --- |
 |ID de la carpeta||res|
 |Resultado||res|
+|session||session|
 
 ### Descargar archivo
   
@@ -70,12 +79,35 @@ Descarga un archivo
 | --- | --- | --- |
 |ID del archivo||id|
 |Seleccionar una carpeta||Ruta a la carpeta|
+|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|download|
+|session||session|
 
 ### Subir archivo
   
 Sube un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|ID de la carpeta||res|
+|ID Drive||root; 98CA2CA6789B976|
+|Ruta de guardado||Files/Reports|
 |Seleccionar un archivo||Ruta del archivo|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|upload|
+|session||session|
+
+### Borrar archivo
+  
+Borrar un archivo
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID del archivo||id|
+|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|delete|
+|session||session|
+
+### Mover archivo
+  
+Mover un archivo a otra carpeta
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID del archivo||id|
+|ID de la carpeta de destino||id|
+|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False|moved|
+|session||session|
