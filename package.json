@@ -1,10 +1,10 @@
 {
   "author": "Nicolas Liendro - Juan Siro",
-  "description": "Working with OneDrive functions",
+  "description": "Work with OneDrive functions | Trabalhar com as funções do OneDrive | Trabajar con funciones de OneDrive",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "license": "MIT",
-  "homepage": "http://rocketbot.co/",
+  "homepage": "http://rocketbot.com/",
   "linux": true,
   "windows": true,
   "mac": true,
@@ -546,7 +546,37 @@
               "pr": "Rota dentro do OneDrive, não tener en cuenta 'root'. No caso de não existir la ruta, la creara."
               },
             "id": "path",
-            "css": "col-md-12"
+            "css": "col-md-6"
+          },
+          {
+            "type": "select",
+            "placeholder": "--- Select ---",
+            "title": {
+              "es": "Resolución de conflictos",
+              "en": "Conflict resolution",
+              "pr": "Resolução de conflitos"
+            },
+            "options": [
+              {
+                "title": "Replace",
+                "value": "replace"
+              },
+              {
+                "title": "Fail",
+                "value": "fail"
+              },
+              {
+                "title": "Rename",
+                "value": "rename"
+              }
+            ],
+            "help": {
+              "es": "Seleccionar que accion tomar ante un conflicto al subir un archivo. Por defecto se reemplaza el archivo.",
+              "en": "Select what action to take in case of a conflict when uploading a file. By default the file is replaced.",
+              "pr": "Selecione qual ação tomar em caso de conflito ao carregar um arquivo. Por padrão, o arquivo é substituído."
+              },
+            "id": "conflict",
+            "css": "col-md-6"
           },
           {
             "type": "file_select",
@@ -561,7 +591,7 @@
               "pr": "Selecione um arquivo"
             },
             "id": "filename",
-            "css": "col-md-6"
+            "css": "col-md-12"
           },
           {
             "type": "input",
@@ -583,7 +613,7 @@
             },
             "remove_vars": true,
             "id": "upload",
-            "css": "col-md-12"
+            "css": "col-md-6"
           },
           {
             "type": "input",

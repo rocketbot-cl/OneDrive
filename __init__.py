@@ -78,6 +78,7 @@ if module == "setCredentials":
             grant_type = 'authorization_code'
             auth_code = {'code': code}
             response = mod_OneDrive_session[session].get_token(auth_code, grant_type)
+            print(response)
         is_connected = mod_OneDrive_session[session].create_tokens_file(response)
         SetVar(res,is_connected)
     except Exception as e:
@@ -166,15 +167,25 @@ if module == "uploadItem":
     path = GetParams("path")
     filename = GetParams("filename")
     upload = GetParams("upload")
-    
-    if driver_id == "" or driver_id == None:
-        driver_id = "root"
-    
+    conflict = GetParams("conflict")
+    import traceback
     try:
-        res = mod_OneDrive_session[session].upload_item(filename, driver_id, path)
+        if driver_id == "" or driver_id == None:
+            driver_id = "root"
+        
+        if path == "" or path == None:
+            path = ""
+        else:
+            path = path + "/"
+        
+        if conflict == "" or conflict == None:
+            conflict = "replace"
+    
+        res = mod_OneDrive_session[session].upload_item(filename, driver_id, path, conflict)
         SetVar(upload, res)
     except Exception as e:
-        SetVar(upload, False)
+        print(traceback.print_exc())
+        SetVar(upload, res)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
