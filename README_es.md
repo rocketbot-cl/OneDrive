@@ -1,14 +1,13 @@
-
-
-
-
 # OneDrive
   
-Trabajando con funciones de OneDrive
- 
+Trabajar con funciones de OneDrive  
+
 ## Como instalar este módulo
   
 __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
+
+
+
 
 ## Como usar este modulo
 
@@ -30,6 +29,7 @@ Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos
 El valor que figurara en {CODE}, copiarlo y utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
 
 Nota: El navegador NO cargara ninguna pagina.
+
 
 ## Overview
 

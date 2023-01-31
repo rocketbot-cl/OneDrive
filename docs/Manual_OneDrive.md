@@ -1,11 +1,13 @@
 # OneDrive
   
-Working with OneDrive functions  
+Work with OneDrive functions  
   
 ![banner](imgs/Banner_OneDrive.png)
 ## How to install this module
   
 __Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+
+
 
 ## How to use this module
 
@@ -86,6 +88,7 @@ Upload an item
 | --- | --- | --- |
 |Drive ID||root; 98CA2CA6789B976|
 |Save path||Files/Reports|
+|Conflict resolution||--- Select ---|
 |Select a file||Path file|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|upload|
 |session||session|

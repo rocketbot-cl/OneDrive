@@ -154,19 +154,69 @@ class OneDrive:
             file.write(response_download.content)
         return True
 
-    def upload_item(self, file_path, drive_id, folder_path):
+    def upload_item(self, file_path, drive_id, folder_path, conflict):
         headers = {
             'Authorization': 'Bearer ' + self.access_token,
+            'Content-Type': 'application/json'
         }
         # Before uploading it is necessary to open the file in binary for reading
-        with open(file_path, "rb") as file:
-            fileHandle = file.read()
+
         filename = file_path.split("/")[-1]
-        # print(filename)
-        url = "https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{folder_path}/{filename}:/content".format(
-            drive_id=drive_id, filename=filename, folder_path=folder_path)
-        response = requests.put(url, data=fileHandle, headers=headers)
-        # print(response.json())
+ 
+        total_file_size = os.path.getsize(file_path)
+        if total_file_size > 4000000:
+            
+            body = {
+                "item": {
+                    "@microsoft.graph.conflictBehavior": conflict,
+                    "name": filename
+                }
+            }
+                       
+            upload_session = requests.post(f"https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{folder_path}{filename}:/createUploadSession", headers=headers, json=body).json()
+            
+            try:
+                with open(file_path, 'rb') as f: 
+                    chunk_size = 327680
+                    chunk_number = total_file_size // chunk_size
+                    chunk_leftover = total_file_size - chunk_size * chunk_number
+                    i = 0
+                    while True:
+                        chunk_data = f.read(chunk_size)
+                        start_index = i*chunk_size
+                        end_index = start_index + chunk_size
+                        #If end of file, break
+                        if not chunk_data:
+                            break
+                        if i == chunk_number:
+                            end_index = start_index + chunk_leftover
+                        #Setting the header with the appropriate chunk data location in the file
+                        headers_session = {
+                            'Content-Length': f'{chunk_size}',
+                            'Content-Range': f'bytes {start_index}-{end_index-1}/{total_file_size}'
+                            }
+                        #Upload one chunk at a time
+                        chunk_data_upload = requests.put(upload_session['uploadUrl'], data=chunk_data, headers=headers_session)
+                        
+                        if 'createdBy' in chunk_data_upload.json():
+                            print("File upload compete")
+                            return chunk_data_upload.json()
+                        else:
+                            print(f"File upload progress: {chunk_data_upload.json()}")
+                        i = i + 1
+                return chunk_data_upload.json()
+            except KeyError:
+                return upload_session
+        else:
+            with open(file_path, "rb") as file:
+                fileHandle = file.read()
+            
+            resolution = f"?@microsoft.graph.conflictBehavior={conflict}"
+                        
+            url = f"https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{folder_path}{filename}:/content{resolution}"
+            response = requests.put(url, data=fileHandle, headers=headers)
+            
+            return response.json()
     
     def delete_item(self, item_id):
         """ Moves this item to the Recycle Bin

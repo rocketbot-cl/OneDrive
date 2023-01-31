@@ -1,14 +1,12 @@
-
-
-
-
 # OneDrive
   
-Working with OneDrive functions  
+Work with OneDrive functions  
 
 ## How to install this module
   
 __Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+
+
 
 ## How to use this module
 
