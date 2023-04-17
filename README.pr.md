@@ -1,13 +1,16 @@
 # OneDrive
   
-Trabalhar com as funções do OneDrive 
+Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem
+
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
 ## Como instalar este módulo
   
 __Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
 
-
-
+A instalação pode ser:
+1. Manual: Baixe o arquivo .zip e descompacte-o na pasta de módulos. O nome da pasta deve ser o mesmo que o nome do módulo e dentro dele deve ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, exemplo e libs. Se você tiver o aplicativo aberto, atualize o navegador para poder utilizar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita, você encontrará a seção **Addons**, selecione **Install Mods**, encontre o módulo desejado e pressione instalar. 
 
 
 ## Como usar este módulo
@@ -60,6 +63,12 @@ Mover um arquivo para outra pasta
 
 
 
+### Changes
+Tue Jan 31 09:34:33 2023  (HEAD -> qa, origin/qa) Merge pull request #7 from jmsiro/devJ
+Fri Nov 11 14:05:38 2022  Merge pull request #5 from jmsiro/devJ
+Tue Oct 4 17:08:45 2022  Merge pull request #4 from jmsiro/devJ
+Thu Sep 1 20:12:08 2022  Merge pull request #3 from jmsiro/devJ
+Wed Aug 24 17:51:16 2022  Merge pull request #1 from jmsiro/devJ
 
 ----
 ### OS

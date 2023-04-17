@@ -1,8 +1,13 @@
 {
   "author": "Nicolas Liendro - Juan Siro",
-  "description": "Work with OneDrive functions | Trabalhar com as funções do OneDrive | Trabajar con funciones de OneDrive",
+  "description": "Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube",
+  "description_lang": {
+    "en": "This module allows you to connect to the OneDrive API, handle files and folders hosted in the cloud",
+    "es": "Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube",
+    "pr": "Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem"
+  },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -49,10 +54,10 @@
               "en": "client_id:",
               "pr": "client_id:"
             },
-            "help": {
-              "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}",
-              "pr": "Nome da variável sem {}"
+            "description": {
+              "es": "ID de cliente obtenido en la creación de la aplicación",
+              "en": "Client ID obtained in the creation of the application",
+              "pr": "ID do cliente obtido na criação do aplicativo"
             },
             "id": "client_id",
             "css": "col-md-12"
@@ -65,10 +70,10 @@
               "en": "client_secret:",
               "pr": "client_secret:"
             },
-            "help": {
-              "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}",
-              "pr": "Nome da variável sem {}"
+            "description": {
+                "es": "Secreto del cliente obtenido en la creación de la aplicación",
+                "en": "Client secret obtained in the creation of the application",
+                "pr": "Segredo do cliente obtido na criação do aplicativo"
             },
             "id": "client_secret",
             "css": "col-md-12"
@@ -81,10 +86,10 @@
               "en": "redirect_uri",
               "pr": "redirect_uri"
             },
-            "help": {
-              "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}",
-              "pr": "Nome da variável sem {}"
+            "description": {
+              "es": "URL de redireccionamiento de la aplicación",
+              "en": "Application redirect URL",
+              "pr": "URL de redirecionamento do aplicativo"
             },
             "id": "redirect_uri",
             "css": "col-md-12"
@@ -97,10 +102,10 @@
               "en": "code",
               "pr": "code"
             },
-            "help": {
-              "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}",
-              "pr": "Nome da variável sem {}"
+            "description": {
+                "es": "Dato obtenido al colocar la URL de autenticación. Revisa la documentación para más información",
+                "en": "Data obtained by placing the authentication URL. Check the documentation for more information",
+                "pr": "Dados obtidos colocando a URL de autenticação. Verifique a documentação para mais informações"
             },
             "id": "code",
             "css": "col-md-12"
@@ -113,10 +118,10 @@
               "en": "tenant",
               "pr": "tenant"
             },
-            "help": {
-              "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}",
-              "pr": "Nome da variável sem {}"
+            "description": {
+              "es": "Identificador del tenant al que se desea conectar",
+              "en": "Tenant identifier to which you want to connect",
+              "pr": "Identificador do tenant ao qual você deseja se conectar"
             },
             "id": "tenant",
             "css": "col-md-12"
@@ -130,7 +135,7 @@
               "pr": "Resultado"
             },
             "description": {
-              "es": "Variable para guardar resultado. Si la conexion es exitosa retornara True, caso contraria sera False",
+              "es": "Variable para guardar resultado. Si la conexion es exitosa retornara True, caso contrario sera False",
               "en": "Variable to store result. If the connection is successful, it will return True, otherwise it will return False",
               "pr": "Variável para armazenar resultado. Se a conexão for bem sucedida retornará True, caso contrário será False"
             },
@@ -150,6 +155,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+              "es": "Variable para guardar el identificador de sesión. Utilizar en caso de que desee conectarse a más de una cuenta de forma simultánea",
+              "en": "Variable to store the session identifier. Use in case you want to connect to more than one account at the same time",
+              "pr": "Variável para armazenar o identificador da sessão. Use caso você queira se conectar a mais de uma conta ao mesmo tempo"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -204,6 +214,11 @@
               "en": "Result",
               "pr": "Resultado"
             },
+            "description": {
+              "es": "Variable donde se guardará el resultado de la consulta",
+              "en": "Variable where the query result will be saved",
+              "pr": "Variável onde o resultado da consulta será salvo"
+            },
             "help": {
               "es": "Nombre de variable sin {}",
               "en": "Variable name without {}",
@@ -219,6 +234,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -273,6 +293,11 @@
               "en": "Result",
               "pr": "Resultado"
             },
+            "description": {
+              "es": "Nombre de variable donde se guardará el resultado",
+              "en": "Variable name where the result will be saved",
+              "pr": "Nome da variável onde o resultado será guardado"
+            },
             "help": {
               "es": "Nombre de variable sin {}",
               "en": "Variable name without {}",
@@ -288,6 +313,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+              "es": "Identificador de sesión",
+              "en": "Session ID",
+              "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -342,6 +372,11 @@
               "en": "Folder ID",
               "pr": "ID da pasta"
             },
+            "description": {
+              "es": "ID de la carpeta que se desea listar",
+              "en": "Folder ID to list",
+              "pr": "ID da pasta para listar"
+            },
             "id": "item_id",
             "css": "col-md-12"
           },
@@ -352,6 +387,11 @@
               "es": "Resultado",
               "en": "Result",
               "pr": "Resultado"
+            },
+            "description": {
+              "es": "Nombre de la variable donde se guardará el resultado",
+              "en": "Variable name to save the result",
+              "pr": "Nome da variável para salvar o resultado"
             },
             "help": {
               "es": "Nombre de variable sin {}",
@@ -369,6 +409,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+              "en": "Session ID",
+              "es": "Identificador de sesión",
+              "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -423,6 +468,11 @@
               "en": "File ID",
               "pr": "ID do arquivo"
             },
+            "description": {
+              "es": "ID del archivo a descargar",
+              "en": "File ID to download",
+              "pr": "ID do arquivo para baixar"
+            },
             "id": "item_id",
             "css": "col-md-12"
           },
@@ -437,6 +487,11 @@
               "es": "Seleccionar una carpeta:",
               "en": "Select a folder:",
               "pr": "Selecione uma pasta"
+            },
+            "description": {
+              "es": "Ruta a la carpeta donde se guardara el archivo",
+              "en": "Path to folder where the file will be saved",
+              "pr": "Caminho da pasta onde o arquivo será salvo"
             },
             "help": {
               "es": "Ruta a la carpeta",
@@ -455,7 +510,7 @@
               "pr": "Resultado"
             },
             "description": {
-              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False",
               "en": "Variable to store result. If the task is successful, it will return True, otherwise it will return False",
               "pr": "Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False"
             },
@@ -475,6 +530,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+                "en": "Session ID",
+                "es": "Identificador de sesión",
+                "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -529,6 +589,11 @@
               "en": "Drive ID",
               "pr": "ID Drive"
             },
+            "description": {
+              "es": "ID del drive donde se subira el archivo.",
+              "en": "ID of the drive where the file will be uploaded.",
+              "pr": "ID do drive onde o arquivo será carregado."
+            },
             "id": "drive_id",
             "css": "col-md-12"
           },
@@ -539,6 +604,11 @@
               "es": "Ruta de guardado",
               "en": "Save path",
               "pr": "Salvar caminho"
+            },
+            "description": {
+                "es": "Ruta donde se guardara el archivo dentro del drive. Si no existe la ruta, la creará.",
+                "en": "Route where the file will be saved within the drive. If the route doesn't exist, it will create.",
+                "pr": "Rota onde o arquivo será salvo dentro do drive. Se a rota não existir, ela criará."
             },
             "help": {
               "es": "Ruta dentro de OneDrive, no tener en cuenta 'root'. En caso de no existir la ruta, la creara.",
@@ -555,6 +625,11 @@
               "es": "Resolución de conflictos",
               "en": "Conflict resolution",
               "pr": "Resolução de conflitos"
+            },
+            "description": {
+              "es": "Seleccionar que accion tomar ante un conflicto al subir un archivo. Por defecto se reemplaza el archivo.",
+              "en": "Select what action to take in case of a conflict when uploading a file. By default the file is replaced.",
+              "pr": "Selecione qual ação tomar em caso de conflito ao carregar um arquivo. Por padrão, o arquivo é substituído."
             },
             "options": [
               {
@@ -590,6 +665,11 @@
               "en": "Select a file:",
               "pr": "Selecione um arquivo"
             },
+            "description": {
+              "es": "Archivo que se desea subir al drive",
+              "en": "File to upload to the drive",
+              "pr": "Arquivo para carregar no drive"
+            },
             "id": "filename",
             "css": "col-md-12"
           },
@@ -602,7 +682,7 @@
               "pr": "Resultado"
             },
             "description": {
-              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False",
               "en": "Variable to store result. If the task is successful, it will return True, otherwise it will return False",
               "pr": "Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False"
             },
@@ -622,6 +702,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+                "en": "Session ID",
+                "es": "Identificador de sesión",
+                "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -676,6 +761,11 @@
               "en": "File ID",
               "pr": "ID do arquivo"
             },
+            "description": {
+              "es": "ID del archivo que se desea borrar",
+              "en": "File ID to delete",
+              "pr": "ID do arquivo para excluir"
+            },
             "id": "item_id",
             "css": "col-md-12"
           },
@@ -688,7 +778,7 @@
               "pr": "Resultado"
             },
             "description": {
-              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False",
               "en": "Variable to store result. If the task is successful, it will return True, otherwise it will return False",
               "pr": "Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False"
             },
@@ -708,6 +798,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description":   {              
+                "en": "Session ID",
+                "es": "Identificador de sesión",
+                "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
@@ -762,6 +857,11 @@
               "en": "File ID",
               "pr": "ID do arquivo"
             },
+            "description": {
+              "es": "ID del archivo que se desea mover",
+              "en": "File ID to move",
+              "pr": "ID do arquivo para mover"
+            },
             "id": "item_id",
             "css": "col-md-12"
           },
@@ -772,6 +872,11 @@
               "es": "ID de la carpeta de destino",
               "en": "Target folder ID",
               "pr": "ID da pasta de destino"
+            },
+            "description": {
+              "es": "ID de la carpeta donde se movera el archivo",
+              "en": "Folder ID where the file will be moved",
+              "pr": "ID da pasta onde o arquivo será movido"
             },
             "id": "target_id",
             "css": "col-md-12"
@@ -785,7 +890,7 @@
               "pr": "Resultado"
             },
             "description": {
-              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contraria sera False",
+              "es": "Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False",
               "en": "Variable to store result. If the task is successful, it will return True, otherwise it will return False",
               "pr": "Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False"
             },
@@ -805,6 +910,11 @@
               "en": "session",
               "es": "session",
               "pr": "session"
+            },
+            "description": {
+                "en": "Session ID",
+                "es": "Identificador de sesión",
+                "pr": "ID da sessão"
             },
             "help": {
               "es": "Identificador de sesión",
