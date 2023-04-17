@@ -1,13 +1,15 @@
 # OneDrive
   
-Trabalhar com as funções do OneDrive  
+Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem
+
+*Read this in other languages: [English](Manual_OneDrive.md), [Português](Manual_OneDrive.pr.md), [Español](Manual_OneDrive.es.md)*  
   
 ![banner](imgs/Banner_OneDrive.png)
 ## Como instalar este módulo
   
-__Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
-
-
+A instalação pode ser:
+1. Manual: Baixe o arquivo .zip e descompacte-o na pasta de módulos. O nome da pasta deve ser o mesmo que o nome do módulo e dentro dele deve ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, exemplo e libs. Se você tiver o aplicativo aberto, atualize o navegador para poder utilizar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita, você encontrará a seção **Addons**, selecione **Install Mods**, encontre o módulo desejado e pressione instalar.  
 
 
 
@@ -39,76 +41,76 @@ Nota: O navegador NÃO carregará nenhuma página.
 Defina as credenciais para ter a API disponível
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|client_id||Your client_id|
-|client_secret||Your client_secret|
-|redirect_uri||http://localhost:5000|
-|code||code|
-|tenant||tenant|
+|client_id|ID do cliente obtido na criação do aplicativo|Your client_id|
+|client_secret|Segredo do cliente obtido na criação do aplicativo|Your client_secret|
+|redirect_uri|URL de redirecionamento do aplicativo|http://localhost:5000|
+|code|Dados obtidos colocando a URL de autenticação. Verifique a documentação para mais informações|code|
+|tenant|Identificador do tenant ao qual você deseja se conectar|tenant|
 |Resultado|Variável para armazenar resultado. Se a conexão for bem sucedida retornará True, caso contrário será False|connection|
-|session||session|
+|session|Variável para armazenar o identificador da sessão. Use caso você queira se conectar a mais de uma conta ao mesmo tempo|session|
 
 ### Listar itens raiz
   
 Listar itens raiz
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Resultado||res|
-|session||session|
+|Resultado|Variável onde o resultado da consulta será salvo|res|
+|session|ID da sessão|session|
 
 ### Listar itens partilhados
   
 Listar os itens que foram partilhados comigo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Resultado||res|
-|session||session|
+|Resultado|Nome da variável onde o resultado será guardado|res|
+|session|ID da sessão|session|
 
 ### Listar itens em uma pasta
   
 Listar itens em uma pasta
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID da pasta||res|
-|Resultado||res|
-|session||session|
+|ID da pasta|ID da pasta para listar|res|
+|Resultado|Nome da variável para salvar o resultado|res|
+|session|ID da sessão|session|
 
 ### Baixar arquivo
   
 Baixar arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID do arquivo||id|
-|Selecione uma pasta||Caminho da pasta|
+|ID do arquivo|ID do arquivo para baixar|id|
+|Selecione uma pasta|Caminho da pasta onde o arquivo será salvo|Caminho da pasta|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|download|
-|session||session|
+|session|ID da sessão|session|
 
 ### Subir arquivo
   
 Subir arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID Drive||root; 98CA2CA6789B976|
-|Salvar caminho||Files/Reports|
-|Resolução de conflitos||--- Select ---|
-|Selecione um arquivo||Caminho de arquivo|
+|ID Drive|ID do drive onde o arquivo será carregado.|root; 98CA2CA6789B976|
+|Salvar caminho|Rota onde o arquivo será salvo dentro do drive. Se a rota não existir, ela criará.|Files/Reports|
+|Resolução de conflitos|Selecione qual ação tomar em caso de conflito ao carregar um arquivo. Por padrão, o arquivo é substituído.|--- Select ---|
+|Selecione um arquivo|Arquivo para carregar no drive|Caminho de arquivo|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|upload|
-|session||session|
+|session|ID da sessão|session|
 
 ### Excluir arquivo
   
 Excluir um arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID do arquivo||id|
+|ID do arquivo|ID do arquivo para excluir|id|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|delete|
-|session||session|
+|session|ID da sessão|session|
 
 ### Mover arquivo
   
 Mover um arquivo para outra pasta
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID do arquivo||id|
-|ID da pasta de destino||id|
+|ID do arquivo|ID do arquivo para mover|id|
+|ID da pasta de destino|ID da pasta onde o arquivo será movido|id|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|moved|
-|session||session|
+|session|ID da sessão|session|
