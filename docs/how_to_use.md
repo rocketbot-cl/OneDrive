@@ -47,7 +47,7 @@ Antes de usar este módulo, você precisa registrar seu aplicativo no portal de 
 1. Entre no portal do Azure (Registro de Aplicativos: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
 2. Selecione "Novo registro".
 3. Em "Tipos de conta suportados", escolha:
-    uma. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
+    a. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
     b. "Somente contas neste diretório organizacional (somente esta conta - locatário único)" para esse caso, use a ID de locatário específica do aplicativo.
 4. Defina o redirecionamento uri (Web) como: https://localhost:5001/ e clique em "Registrar".
 5. Copie o ID do aplicativo (cliente). Você vai precisar desse valor.

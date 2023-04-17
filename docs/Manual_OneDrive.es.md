@@ -1,7 +1,3 @@
-
-
-
-
 # OneDrive
   
 Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube  

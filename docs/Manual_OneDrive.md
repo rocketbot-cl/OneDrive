@@ -1,7 +1,3 @@
-
-
-
-
 # OneDrive
   
 This module allows you to connect to the OneDrive API, handle files and folders hosted in the cloud  
