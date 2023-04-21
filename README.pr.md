@@ -1,16 +1,17 @@
 # OneDrive
   
-Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem
+Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem  
 
-*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
+  
+*Read this in other languages: [English](Manual_OneDrive.md), [Português](Manual_OneDrive.pr.md), [Español](Manual_OneDrive.es.md)*  
+
 
 ## Como instalar este módulo
   
-__Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
-
-A instalação pode ser:
-1. Manual: Baixe o arquivo .zip e descompacte-o na pasta de módulos. O nome da pasta deve ser o mesmo que o nome do módulo e dentro dele deve ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, exemplo e libs. Se você tiver o aplicativo aberto, atualize o navegador para poder utilizar o novo módulo.
-2. Automático: Ao entrar no Rocketbot Studio na margem direita, você encontrará a seção **Addons**, selecione **Install Mods**, encontre o módulo desejado e pressione instalar. 
+Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
+1. Manual: __Baixe__ o arquivo .zip e descompacte-o na pasta módulos. O nome da pasta deve ser o mesmo do módulo e dentro dela devem ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, example e libs. Se você tiver o aplicativo aberto, atualize seu navegador para poder usar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione 
+**Install Mods**, procure o módulo desejado e aperte instalar.  
 
 
 ## Como usar este módulo
@@ -20,7 +21,7 @@ Antes de usar este módulo, você precisa registrar seu aplicativo no portal de 
 1. Entre no portal do Azure (Registro de Aplicativos: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
 2. Selecione "Novo registro".
 3. Em "Tipos de conta suportados", escolha:
-    uma. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
+    a. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
     b. "Somente contas neste diretório organizacional (somente esta conta - locatário único)" para esse caso, use a ID de locatário específica do aplicativo.
 4. Defina o redirecionamento uri (Web) como: https://localhost:5001/ e clique em "Registrar".
 5. Copie o ID do aplicativo (cliente). Você vai precisar desse valor.
@@ -55,20 +56,17 @@ Baixar arquivo
 6. Subir arquivo  
 Subir arquivo
 
-7. Excluir arquivo  
+7. Subir arquivo no drive compartilhado  
+Subir arquivo
+
+8. Excluir arquivo  
 Excluir um arquivo
 
-8. Mover arquivo  
+9. Mover arquivo  
 Mover um arquivo para outra pasta  
 
 
 
-### Changes
-Tue Jan 31 09:34:33 2023  (HEAD -> qa, origin/qa) Merge pull request #7 from jmsiro/devJ
-Fri Nov 11 14:05:38 2022  Merge pull request #5 from jmsiro/devJ
-Tue Oct 4 17:08:45 2022  Merge pull request #4 from jmsiro/devJ
-Thu Sep 1 20:12:08 2022  Merge pull request #3 from jmsiro/devJ
-Wed Aug 24 17:51:16 2022  Merge pull request #1 from jmsiro/devJ
 
 ----
 ### OS

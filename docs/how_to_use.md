@@ -1,4 +1,3 @@
-
 ## How to use this module
 
 Before using this module, you need to register your app in the Azure App Registrations portal.
@@ -19,9 +18,7 @@ Replace within the link {tennat}, {client_id} and {redirect_uri}, with the data 
 The value that appears in {CODE}, copy it and use it in the Rocketbot command in the "code" field to make the connection.
 
 Note: The browser will NOT load any pages.
-
 ---
-
 ## Como usar este modulo
 
 Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Azure App Registrations. 
@@ -42,10 +39,7 @@ Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos
 El valor que figurara en {CODE}, copiarlo y utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
 
 Nota: El navegador NO cargara ninguna pagina.
-
 ---
-
-
 ## Como usar este módulo
 
 Antes de usar este módulo, você precisa registrar seu aplicativo no portal de Registros de Aplicativo do Azure.
@@ -53,7 +47,7 @@ Antes de usar este módulo, você precisa registrar seu aplicativo no portal de 
 1. Entre no portal do Azure (Registro de Aplicativos: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
 2. Selecione "Novo registro".
 3. Em "Tipos de conta suportados", escolha:
-    uma. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
+    a. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
     b. "Somente contas neste diretório organizacional (somente esta conta - locatário único)" para esse caso, use a ID de locatário específica do aplicativo.
 4. Defina o redirecionamento uri (Web) como: https://localhost:5001/ e clique em "Registrar".
 5. Copie o ID do aplicativo (cliente). Você vai precisar desse valor.
