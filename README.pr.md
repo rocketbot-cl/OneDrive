@@ -1,13 +1,17 @@
 # OneDrive
   
-Trabalhar com as funções do OneDrive 
+Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem  
+
+  
+*Read this in other languages: [English](Manual_OneDrive.md), [Português](Manual_OneDrive.pr.md), [Español](Manual_OneDrive.es.md)*  
+
 
 ## Como instalar este módulo
   
-__Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
-
-
-
+Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
+1. Manual: __Baixe__ o arquivo .zip e descompacte-o na pasta módulos. O nome da pasta deve ser o mesmo do módulo e dentro dela devem ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, example e libs. Se você tiver o aplicativo aberto, atualize seu navegador para poder usar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione 
+**Install Mods**, procure o módulo desejado e aperte instalar.  
 
 
 ## Como usar este módulo
@@ -17,7 +21,7 @@ Antes de usar este módulo, você precisa registrar seu aplicativo no portal de 
 1. Entre no portal do Azure (Registro de Aplicativos: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
 2. Selecione "Novo registro".
 3. Em "Tipos de conta suportados", escolha:
-    uma. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
+    a. "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD - Multilocatário) e contas pessoais da Microsoft (por exemplo, Skype, Xbox)" para este caso, use ID do locatário = comum
     b. "Somente contas neste diretório organizacional (somente esta conta - locatário único)" para esse caso, use a ID de locatário específica do aplicativo.
 4. Defina o redirecionamento uri (Web) como: https://localhost:5001/ e clique em "Registrar".
 5. Copie o ID do aplicativo (cliente). Você vai precisar desse valor.
@@ -52,10 +56,13 @@ Baixar arquivo
 6. Subir arquivo  
 Subir arquivo
 
-7. Excluir arquivo  
+7. Subir arquivo no drive compartilhado  
+Subir arquivo
+
+8. Excluir arquivo  
 Excluir um arquivo
 
-8. Mover arquivo  
+9. Mover arquivo  
 Mover um arquivo para outra pasta  
 
 

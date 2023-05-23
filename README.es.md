@@ -1,12 +1,17 @@
 # OneDrive
   
-Trabajar con funciones de OneDrive  
+Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube  
+
+  
+*Read this in other languages: [English](Manual_OneDrive.md), [Português](Manual_OneDrive.pr.md), [Español](Manual_OneDrive.es.md)*  
+
 
 ## Como instalar este módulo
   
-__Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de Rocketbot.  
-
-
+Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
+1. Manual: __Descargar__ el archivo .zip y descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, refresca el navegador para poder utilizar el nuevo modulo.
+2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección
+ de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
 
 
 ## Como usar este modulo
@@ -30,7 +35,6 @@ El valor que figurara en {CODE}, copiarlo y utilizarlo en el comando de Rocketbo
 
 Nota: El navegador NO cargara ninguna pagina.
 
-
 ## Overview
 
 
@@ -52,10 +56,13 @@ Descarga un archivo
 6. Subir archivo  
 Sube un archivo
 
-7. Borrar archivo  
+7. Subir archivo a carpeta compartida  
+Sube un archivo a unacarpeta compartida
+
+8. Borrar archivo  
 Borrar un archivo
 
-8. Mover archivo  
+9. Mover archivo  
 Mover un archivo a otra carpeta  
 
 

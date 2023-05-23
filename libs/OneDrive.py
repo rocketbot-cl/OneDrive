@@ -126,33 +126,41 @@ class OneDrive:
         json_response = json.loads(response.text)
         return json_response
 
-    def list_items(self, item_id):
+    def list_items(self, item_id, drive_id=None):
         headers = {
             'Authorization': 'Bearer ' + self.access_token
         }
-        url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/children".format(item_id=item_id)
+        if drive_id:
+            url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}/children".format(drive_id=drive_id, item_id=item_id)
+        else:
+            url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/children".format(item_id=item_id)
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
         return json_response
 
-    def download_item(self, item_id, folder_path):
+    def download_item(self, item_id, folder_path, drive_id=None):
         headers = {
             'Authorization': 'Bearer ' + self.access_token
         }
-        url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/".format(item_id=item_id)
+        if drive_id:
+            url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}/".format(drive_id=drive_id, item_id=item_id)
+        else:
+            url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/".format(item_id=item_id)
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
-        url_download = json_response['@microsoft.graph.downloadUrl']
-        filename = json_response['name']
-        response_download = requests.get(url_download, headers=headers)
-        # print(response_download.json())
-        
-        if not response_download:
-            return False
+        try:
+            url_download = json_response['@microsoft.graph.downloadUrl']
+            filename = json_response['name']
+            response_download = requests.get(url_download, headers=headers)
+            # print(response_download.json()
+            if not response_download:
+                return False
 
-        with open(folder_path + os.sep + filename, 'wb') as file:
-            file.write(response_download.content)
-        return True
+            with open(folder_path + os.sep + filename, 'wb') as file:
+                file.write(response_download.content)
+            return True
+        except:
+            return json_response
 
     def upload_item(self, file_path, drive_id, folder_path, conflict):
         headers = {
@@ -172,7 +180,6 @@ class OneDrive:
                     "name": filename
                 }
             }
-                       
             upload_session = requests.post(f"https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{folder_path}{filename}:/createUploadSession", headers=headers, json=body).json()
             
             try:
@@ -212,8 +219,74 @@ class OneDrive:
                 fileHandle = file.read()
             
             resolution = f"?@microsoft.graph.conflictBehavior={conflict}"
-                        
+            
             url = f"https://graph.microsoft.com/v1.0/me/drive/items/{drive_id}:/{folder_path}{filename}:/content{resolution}"
+                
+            response = requests.put(url, data=fileHandle, headers=headers)
+            
+            return response.json()
+    
+    def upload_item_shared_folder(self, file_path, drive_id, folder_id, conflict):
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token,
+            'Content-Type': 'application/json'
+        }
+        # Before uploading it is necessary to open the file in binary for reading
+
+        filename = file_path.split("/")[-1]
+ 
+        total_file_size = os.path.getsize(file_path)
+        if total_file_size > 4000000:
+            
+            body = {
+                "item": {
+                    "@microsoft.graph.conflictBehavior": conflict,
+                    "name": filename
+                }
+            }
+            
+            upload_session = requests.post(f"https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{folder_id}:/{filename}:/createUploadSession", headers=headers, json=body).json()
+           
+            try:
+                with open(file_path, 'rb') as f: 
+                    chunk_size = 327680
+                    chunk_number = total_file_size // chunk_size
+                    chunk_leftover = total_file_size - chunk_size * chunk_number
+                    i = 0
+                    while True:
+                        chunk_data = f.read(chunk_size)
+                        start_index = i*chunk_size
+                        end_index = start_index + chunk_size
+                        #If end of file, break
+                        if not chunk_data:
+                            break
+                        if i == chunk_number:
+                            end_index = start_index + chunk_leftover
+                        #Setting the header with the appropriate chunk data location in the file
+                        headers_session = {
+                            'Content-Length': f'{chunk_size}',
+                            'Content-Range': f'bytes {start_index}-{end_index-1}/{total_file_size}'
+                            }
+                        #Upload one chunk at a time
+                        chunk_data_upload = requests.put(upload_session['uploadUrl'], data=chunk_data, headers=headers_session)
+                        
+                        if 'createdBy' in chunk_data_upload.json():
+                            print("File upload compete")
+                            return chunk_data_upload.json()
+                        else:
+                            print(f"File upload progress: {chunk_data_upload.json()}")
+                        i = i + 1
+                return chunk_data_upload.json()
+            except KeyError:
+                return upload_session
+        else:
+            with open(file_path, "rb") as file:
+                fileHandle = file.read()
+            
+            resolution = f"?@microsoft.graph.conflictBehavior={conflict}"
+            
+            url = f"https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{folder_id}:/{filename}:/content{resolution}"
+        
             response = requests.put(url, data=fileHandle, headers=headers)
             
             return response.json()
@@ -230,13 +303,15 @@ class OneDrive:
         
         url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}".format(
             item_id=item_id)
-        
-        response = requests.delete(url, headers=headers)
-        
-        if not response:
-            return False
+        try:
+            response = requests.delete(url, headers=headers)
+            
+            if not response:
+                return False
 
-        return True
+            return True
+        except:
+            return response
         
     def move_item(self, item_id, target_id):
         """ Moves this DriveItem to another Folder.
@@ -279,11 +354,14 @@ class OneDrive:
         # url = self.build_url(
         #     self._endpoints.get('item').format(id=self.object_id))
 
-        payload = {"parentReference": {"id": "{target_id}".format(target_id=target_id)}}
-        
-        response = requests.patch(url, json=payload, headers=headers)
-        
-        if not response:
-            return False
+        try:
+            payload = {"parentReference": {"id": "{target_id}".format(target_id=target_id)}}
+            
+            response = requests.patch(url, json=payload, headers=headers)
+            
+            if not response:
+                return False
 
-        return True
+            return True
+        except:
+            return response
