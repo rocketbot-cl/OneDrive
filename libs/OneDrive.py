@@ -130,13 +130,20 @@ class OneDrive:
         headers = {
             'Authorization': 'Bearer ' + self.access_token
         }
+        result = []        
         if drive_id:
             url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}/children".format(drive_id=drive_id, item_id=item_id)
         else:
             url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/children".format(item_id=item_id)
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
-        return json_response
+        result.append(json_response)
+        while "@odata.nextLink" in json_response:
+            response = requests.get(json_response["@odata.nextLink"], headers=headers)
+            json_response = json.loads(response.text)
+            result.append(json_response)
+                        
+        return result
 
     def download_item(self, item_id, folder_path, drive_id=None):
         headers = {
@@ -365,3 +372,28 @@ class OneDrive:
             return True
         except:
             return response
+
+    def new_folder(self, item_id=None, name="NewFolder"):
+            """Create new folder in OneDrive"""
+            
+            headers = {
+                'Authorization': 'Bearer ' + self.access_token,
+            }
+            
+            if not item_id:
+                url = "https://graph.microsoft.com/v1.0/me/drive/root/children"
+            else:
+                url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}/children".format(
+                    item_id=item_id)
+
+            try:
+                payload = {"name": f"{name}", "folder": { }, "@microsoft.graph.conflictBehavior": "rename"}
+                
+                response = requests.post(url, json=payload, headers=headers)
+                
+                if not response:
+                    return False
+
+                return True
+            except:
+                return response

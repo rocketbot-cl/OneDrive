@@ -1,18 +1,19 @@
+
+
+
+
 # OneDrive
   
 Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube  
 
-  
-*Read this in other languages: [English](Manual_OneDrive.md), [Português](Manual_OneDrive.pr.md), [Español](Manual_OneDrive.es.md)*  
-
+*Read this in other languages: [English](Manual_OneDrive.md), [Português](Manual_OneDrive.pr.md), [Español](Manual_OneDrive.es.md)*
   
 ![banner](imgs/Banner_OneDrive.png)
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 1. Manual: __Descargar__ el archivo .zip y descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, refresca el navegador para poder utilizar el nuevo modulo.
-2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección
- de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
+2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
 
 
 ## Como usar este modulo
@@ -22,21 +23,20 @@ Antes de usar este modulo, es necesario registrar tu aplicación en el portal de
 1. Inicie sesión en Azure Portal (Registración de aplicaciones: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
 2. Seleccione "Nuevo registro".
 3. En “Tipos de cuenta compatibles” soportados elija:
-    a. "Cuentas en cualquier directorio organizativo (cualquier directorio de Azure AD: multiinquilino) y cuentas de Microsoft 
-personales (como Skype o Xbox)" para este caso utilizar  ID Inquilino = common
-    b. "Solo cuentas de este directorio organizativo (solo esta cuenta: inquilino único) para este caso utilizar ID Inquilino especifica de la aplicación.
+    - "Cuentas en cualquier directorio organizativo (cualquier directorio de Azure AD: multiinquilino) y cuentas de Microsoft personales (como Skype o Xbox)" para este caso utilizar  ID Inquilino = **common**.
+    - "Solo cuentas de este directorio organizativo (solo esta cuenta: inquilino único) para este caso utilizar **ID Inquilino** especifico de la aplicación.
+    - "Solo cuentas personales de Microsoft " for this case use use Tenant ID = **consumers**.
 4. Establezca la uri de redirección (Web) como: https://localhost:5001/ y haga click en "Registrar".
 5. Copie el ID de la aplicación (cliente). Necesitará este valor.
-6. Dentro de "Certificados y secretos", genere un nuevo secreto de cliente. Establezca la caducidad
- (preferiblemente 24 meses). Copie el VALOR del secreto de cliente creado (NO el ID de Secreto). El mismo se ocultará al cabo de unos minutos.
+
+6. Dentro de "Certificados y secretos", genere un nuevo secreto de cliente. Establezca la caducidad (preferiblemente 24 meses). Copie el VALOR del secreto de cliente creado (NO el ID de Secreto). El mismo se ocultará al cabo de unos minutos.
 7. Dentro de "Permisos de API", haga click en "Agregar un permiso", seleccione "Microsoft Graph", luego "Permisos delegados", busque y seleccione "Files.ReadWrite.All", y por ultimo "Agregar permisos".
 8. Codigo de acceso, generar codigo ingresando al siguiente link:
-
-https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
 Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos correspondientes a la applicación creada.
-9. Si la operación tuvo exito, la URL del navedador cambiara por: http://localhost:5001/?code={CODE}&state=12345#!/ 
-El valor que figurara en {CODE}, copiarlo y 
-utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
+9. Si la operación tuvo exito, la URL del navedador cambiara por: http://localhost:5001/?code={**CODE**}&state=12345#!/ 
+El valor que figurara en 
+{CODE}, copiarlo y utilizarlo en el comando de Rocketbot en el campo "code" para realizar la conexión.
 
 Nota: El navegador NO cargara ninguna pagina.
 
@@ -133,4 +133,14 @@ Mover un archivo a otra carpeta
 |ID del archivo|ID del archivo que se desea mover|id|
 |ID de la carpeta de destino|ID de la carpeta donde se movera el archivo|id|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|moved|
+|session|Identificador de sesión|session|
+
+### Nueva carpeta
+  
+Crear una nueva carpeta
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID de la carpeta (Opcional)|ID de la carpeta (padre) donde se creara la nueva carpeta|id|
+|Nombre de la nueva carpeta|Nombre a asignarle a la nueva carpeta|id|
+|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|new|
 |session|Identificador de sesión|session|
