@@ -94,9 +94,12 @@ except:
     raise Exception("Must be connected before executing any command...")
 
 if module == "getRootItems":
+    order_by = GetParams("order_by") or None
+    filter_by = GetParams("filter_by") or None
+    top = GetParams("top") or None
     res = GetParams("res")
     try:
-        response = mod_OneDrive_session[session].get_items()
+        response = mod_OneDrive_session[session].get_items(order_by, filter_by, top)
         try:
             values = response['value']
             folders = []
@@ -142,12 +145,15 @@ if module == "getItemsSharedWithMe":
 if module == "listItems":
     item_id = GetParams("item_id")
     drive_id = GetParams("drive_id")
+    order_by = GetParams("order_by") or None
+    filter_by = GetParams("filter_by") or None
+    top = GetParams("top") or None
     res = GetParams("res")
     try:
         if drive_id and drive_id != "":
-            response = mod_OneDrive_session[session].list_items(item_id, drive_id)
+            response = mod_OneDrive_session[session].list_items(item_id, drive_id=drive_id, order_by=order_by, filter_by=filter_by, top=top)
         else:
-            response = mod_OneDrive_session[session].list_items(item_id)
+            response = mod_OneDrive_session[session].list_items(item_id, order_by=order_by, filter_by=filter_by, top=top)
         try:
             items = []
             for r in response:

@@ -90,7 +90,7 @@ class OneDrive:
             print(e)
             raise e
 
-    def get_items(self):
+    def get_items(self, order_by=None, filter_by=None, top=None):
         """ List children in the root of the current user's drive.
 
         Create a json with credentials.
@@ -104,6 +104,16 @@ class OneDrive:
             'Authorization': 'Bearer ' + self.access_token
         }
         url = "https://graph.microsoft.com/v1.0/me/drive/root/children"
+        
+        if order_by:
+            url += "?$orderby={order_by}".format(order_by=order_by)
+        if filter_by:
+            url = url + "&" if order_by else url + "?"
+            url += "$filter={filter}".format(filter=filter_by)
+        if top:
+            url = url + "&" if order_by or filter_by else url + "?"
+            url += "$top={top}".format(top=top)
+        
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
         return json_response
@@ -126,7 +136,7 @@ class OneDrive:
         json_response = json.loads(response.text)
         return json_response
 
-    def list_items(self, item_id, drive_id=None):
+    def list_items(self, item_id, drive_id=None, order_by=None, filter_by=None, top=None):
         headers = {
             'Authorization': 'Bearer ' + self.access_token
         }
@@ -134,7 +144,17 @@ class OneDrive:
         if drive_id:
             url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}/children".format(drive_id=drive_id, item_id=item_id)
         else:
-            url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/children".format(item_id=item_id)
+            url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}/children".format(item_id=item_id)
+            
+        if order_by:
+            url += "?$orderby={order_by}".format(order_by=order_by)
+        if filter_by:
+            url = url + "&" if order_by else url + "?"
+            url += "$filter={filter}".format(filter=filter_by)
+        if top:
+            url = url + "&" if order_by or filter_by else url + "?"
+            url += "$top={top}".format(top=top)
+        
         response = requests.get(url, headers=headers)
         json_response = json.loads(response.text)
         result.append(json_response)
