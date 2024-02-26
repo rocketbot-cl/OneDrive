@@ -43,10 +43,7 @@ Subir arquivo
 Excluir um arquivo
 
 9. Mover arquivo  
-Mover um arquivo para outra pasta
-
-10. Nova pasta  
-Criar uma nova pasta  
+Mover um arquivo para outra pasta  
 
 
 

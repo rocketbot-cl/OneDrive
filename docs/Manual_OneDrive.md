@@ -59,6 +59,9 @@ List root items
 |Parameters|Description|example|
 | --- | --- | --- |
 |Result|Variable where the query result will be saved|res|
+|Order by|Parameters to order the results of the query made|lastModifiedDateTime desc|
+|Filtrar por|Filter to apply to perform the query|name eq 'file.txt'|
+|Quantity|Number of items to obtain. It will return the top items of the query|10|
 |session|Session ID|session|
 
 ### List shared items
@@ -76,6 +79,9 @@ List items from a folder
 | --- | --- | --- |
 |Folder ID|Folder ID to list|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
 |Shared Drive ID (Optional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Order by|Parameters to order the results of the query made|lastModifiedDateTime desc|
+|Filtrar por|Filter to apply to perform the query|name eq 'file.txt'|
+|Quantity|Number of items to obtain. It will return the top items of the query|10|
 |Result|Variable name to save the result|res|
 |session|Session ID|session|
 
@@ -131,14 +137,4 @@ Move an item to another folder
 |File ID|File ID to move|id|
 |Target folder ID|Folder ID where the file will be moved|id|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|moved|
-|session|Session ID|session|
-
-### New folder
-  
-Create a new folder
-|Parameters|Description|example|
-| --- | --- | --- |
-|Folder ID (Optional)|ID of the folder (parent) where the new folder will be created|id|
-|Name of the new folder|Name to assign to the new folder|id|
-|Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|new|
 |session|Session ID|session|

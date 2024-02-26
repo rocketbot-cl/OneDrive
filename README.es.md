@@ -43,10 +43,7 @@ Sube un archivo a unacarpeta compartida
 Borrar un archivo
 
 9. Mover archivo  
-Mover un archivo a otra carpeta
-
-10. Nueva carpeta  
-Crear una nueva carpeta  
+Mover un archivo a otra carpeta  
 
 
 

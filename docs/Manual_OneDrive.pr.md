@@ -60,6 +60,9 @@ Listar itens raiz
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Resultado|Variável onde o resultado da consulta será salvo|res|
+|Ordenar por|Parâmetros para ordenar os resultados da consulta realizada|lastModifiedDateTime desc|
+|Filtrar por|Filtro a ser aplicado para realizar a consulta|name eq 'file.txt'|
+|Quantia|Número de itens a serem obtidos. Ele retornará os principais itens da consulta|10|
 |session|ID da sessão|session|
 
 ### Listar itens partilhados
@@ -77,6 +80,9 @@ Listar itens em uma pasta
 | --- | --- | --- |
 |ID da pasta|ID da pasta para listar|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
 |ID do disco compartilhado (Opcional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Ordenar por|Parâmetros para ordenar os resultados da consulta realizada|lastModifiedDateTime desc|
+|Filtrar por|Filtro a ser aplicado para realizar a consulta|name eq 'file.txt'|
+|Quantia|Número de itens a serem obtidos. Ele retornará os principais itens da consulta|10|
 |Resultado|Nome da variável para salvar o resultado|res|
 |session|ID da sessão|session|
 
@@ -132,14 +138,4 @@ Mover um arquivo para outra pasta
 |ID do arquivo|ID do arquivo para mover|id|
 |ID da pasta de destino|ID da pasta onde o arquivo será movido|id|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|moved|
-|session|ID da sessão|session|
-
-### Nova pasta
-  
-Criar uma nova pasta
-|Parâmetros|Descrição|exemplo|
-| --- | --- | --- |
-|ID da pasta (Opcional)|ID da pasta (pai) onde a nova pasta será criada|id|
-|Nome da nova pasta|Nome a atribuir à nova pasta|id|
-|Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|new|
 |session|ID da sessão|session|

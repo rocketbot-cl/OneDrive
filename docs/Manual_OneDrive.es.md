@@ -61,6 +61,9 @@ Listar items de la raiz
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Resultado|Variable donde se guardará el resultado de la consulta|res|
+|Ordenar por|Parámetros para ordenar los resultados de la consulta realizada|lastModifiedDateTime desc|
+|Filter by|Filtro a aplicar para realizar la consulta|name eq 'file.txt'|
+|Cantidad|Cantidad de items a obtener. Devolvera el top de items de la consulta.|10|
 |session|Identificador de sesión|session|
 
 ### Listar items compartidos
@@ -78,6 +81,9 @@ Listar items de una carpeta
 | --- | --- | --- |
 |ID de la carpeta|ID de la carpeta que se desea listar|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
 |ID de Disco Compartido (Opcional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Ordenar por|Parámetros para ordenar los resultados de la consulta realizada|lastModifiedDateTime desc|
+|Filter by|Filtro a aplicar para realizar la consulta|name eq 'file.txt'|
+|Cantidad|Cantidad de items a obtener. Devolvera el top de items de la consulta.|10|
 |Resultado|Nombre de la variable donde se guardará el resultado|res|
 |session|Identificador de sesión|session|
 
@@ -133,14 +139,4 @@ Mover un archivo a otra carpeta
 |ID del archivo|ID del archivo que se desea mover|id|
 |ID de la carpeta de destino|ID de la carpeta donde se movera el archivo|id|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|moved|
-|session|Identificador de sesión|session|
-
-### Nueva carpeta
-  
-Crear una nueva carpeta
-|Parámetros|Descripción|ejemplo|
-| --- | --- | --- |
-|ID de la carpeta (Opcional)|ID de la carpeta (padre) donde se creara la nueva carpeta|id|
-|Nombre de la nueva carpeta|Nombre a asignarle a la nueva carpeta|id|
-|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|new|
 |session|Identificador de sesión|session|
