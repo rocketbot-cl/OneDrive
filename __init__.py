@@ -107,7 +107,8 @@ if module == "getRootItems":
                 dict_folder = {
                     'name': folder['name'],
                     'id': folder['id'],
-                    'parent': folder['parentReference']
+                    'parent': folder['parentReference'],
+                    'lastModifiedDateTime': folder['lastModifiedDateTime']
                 }
                 folders.append(dict_folder)
         except:
@@ -130,7 +131,8 @@ if module == "getItemsSharedWithMe":
                 dict_folder = {
                     'name': folder['name'],
                     'id': folder['id'],
-                    'parent_drive_id': folder['remoteItem']['parentReference']['driveId']
+                    'parent_drive_id': folder['remoteItem']['parentReference']['driveId'],
+                    'lastModifiedDateTime': folder['lastModifiedDateTime']
                 }
                 folders.append(dict_folder)
         except:
@@ -161,7 +163,8 @@ if module == "listItems":
                 for item in values:
                     dict_item = {
                         'name': item['name'],
-                        'id': item['id']
+                        'id': item['id'],
+                        'lastModifiedDateTime': item['lastModifiedDateTime']
                     }
                     items.append(dict_item)
         except:
@@ -199,6 +202,7 @@ if module == "uploadItem":
     conflict = GetParams("conflict")
     filename = GetParams("filename")
     upload = GetParams("upload")
+    res = GetParams("res")
 
     import traceback
     
@@ -217,8 +221,7 @@ if module == "uploadItem":
         res = mod_OneDrive_session[session].upload_item(filename, drive_id, path, conflict)
         SetVar(upload, res)
     except Exception as e:
-        print(traceback.print_exc())
-        SetVar(upload, res)
+        SetVar(upload, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
