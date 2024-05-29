@@ -66,7 +66,6 @@ if module == "setCredentials":
         credentials_filename = "credentials_{s}.json".format(s=session)
     
     path_credentials = base_path + "modules" + os.sep + "OneDrive" + os.sep + credentials_filename
-    
     mod_OneDrive_session[session] = OneDrive(client_id=client_id, client_secret=client_secret, tenant=tenant, redirect_uri=redirect_uri, 
                                              path_credentials=path_credentials)
     try:
@@ -95,18 +94,25 @@ except:
     raise Exception("Must be connected before executing any command...")
 
 if module == "getRootItems":
+    order_by = GetParams("order_by") or None
+    filter_by = GetParams("filter_by") or None
+    top = GetParams("top") or None
     res = GetParams("res")
     try:
-        response = mod_OneDrive_session[session].get_items()
-        values = response['value']
-        folders = []
-        for folder in values:
-            dict_folder = {
-                'name': folder['name'],
-                'id': folder['id'],
-                'parent': folder['parentReference']
-            }
-            folders.append(dict_folder)
+        response = mod_OneDrive_session[session].get_items(order_by, filter_by, top)
+        try:
+            values = response['value']
+            folders = []
+            for folder in values:
+                dict_folder = {
+                    'name': folder['name'],
+                    'id': folder['id'],
+                    'parent': folder['parentReference'],
+                    'lastModifiedDateTime': folder['lastModifiedDateTime']
+                }
+                folders.append(dict_folder)
+        except:
+            folders = response
         SetVar(res, folders)
     except Exception as e:
         SetVar(res, response)
@@ -118,15 +124,19 @@ if module == "getItemsSharedWithMe":
     res = GetParams("res")
     try:
         response = mod_OneDrive_session[session].get_items_shared_with_me()
-        values = response['value']
-        folders = []
-        for folder in values:
-            dict_folder = {
-                'name': folder['name'],
-                'id': folder['id'],
-                'parent_drive_id': folder['remoteItem']['parentReference']['driveId']
-            }
-            folders.append(dict_folder)
+        try:
+            values = response['value']
+            folders = []
+            for folder in values:
+                dict_folder = {
+                    'name': folder['name'],
+                    'id': folder['id'],
+                    'parent_drive_id': folder['remoteItem']['parentReference']['driveId'],
+                    'lastModifiedDateTime': folder['lastModifiedDateTime']
+                }
+                folders.append(dict_folder)
+        except:
+            folders = response
         SetVar(res, folders)
     except Exception as e:
         SetVar(res, response)
@@ -137,21 +147,28 @@ if module == "getItemsSharedWithMe":
 if module == "listItems":
     item_id = GetParams("item_id")
     drive_id = GetParams("drive_id")
+    order_by = GetParams("order_by") or None
+    filter_by = GetParams("filter_by") or None
+    top = GetParams("top") or None
     res = GetParams("res")
     try:
         if drive_id and drive_id != "":
-            response = mod_OneDrive_session[session].list_items(item_id, drive_id)
-            values = response['value']
+            response = mod_OneDrive_session[session].list_items(item_id, drive_id=drive_id, order_by=order_by, filter_by=filter_by, top=top)
         else:
-            response = mod_OneDrive_session[session].list_items(item_id)
-            values = response['value']
-        items = []
-        for item in values:
-            dict_item = {
-                'name': item['name'],
-                'id': item['id']
-            }
-            items.append(dict_item)
+            response = mod_OneDrive_session[session].list_items(item_id, order_by=order_by, filter_by=filter_by, top=top)
+        try:
+            items = []
+            for r in response:
+                values = r['value']
+                for item in values:
+                    dict_item = {
+                        'name': item['name'],
+                        'id': item['id'],
+                        'lastModifiedDateTime': item['lastModifiedDateTime']
+                    }
+                    items.append(dict_item)
+        except:
+            items = response
         SetVar(res, items)
     except Exception as e:
         SetVar(res, response)
@@ -185,6 +202,7 @@ if module == "uploadItem":
     conflict = GetParams("conflict")
     filename = GetParams("filename")
     upload = GetParams("upload")
+    res = GetParams("res")
 
     import traceback
     
@@ -203,8 +221,7 @@ if module == "uploadItem":
         res = mod_OneDrive_session[session].upload_item(filename, drive_id, path, conflict)
         SetVar(upload, res)
     except Exception as e:
-        print(traceback.print_exc())
-        SetVar(upload, res)
+        SetVar(upload, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
@@ -256,6 +273,22 @@ if module == "moveItem":
         SetVar(moved, res)
     except Exception as e:
         SetVar(moved, res)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "newFolder":
+    import traceback
+    item_id = GetParams("item_id")
+    name = GetParams("name")
+    new = GetParams("new")
+    
+    try:
+        res = mod_OneDrive_session[session].new_folder(item_id, name)
+        SetVar(new, res)
+    except Exception as e:
+        traceback.print_exc()
+        SetVar(new, res)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e

@@ -7,7 +7,7 @@
     "pr": "Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem"
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.3.7",
+  "version": "1.5.1",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -229,6 +229,59 @@
           },
           {
             "type": "input",
+            "placeholder": "lastModifiedDateTime desc",
+            "title": {
+              "en": "Order by",
+              "es": "Ordenar por",
+              "pr": "Ordenar por"
+            },
+            "description": {
+              "es": "Parámetros para ordenar los resultados de la consulta realizada",
+              "en": "Parameters to order the results of the query made",
+              "pr": "Parâmetros para ordenar os resultados da consulta realizada"
+            },
+            "help": {
+              "es": "Works for name, size, and lastModifiedDateTime fields.",
+              "en": "Funciona para los campos de name, size y lastModifiedDateTime.",
+              "pr": "Funciona para campos de name, size e lastModifiedDateTime."
+            },
+            "id": "order_by",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "name eq 'file.txt'",
+            "title": {
+              "en": "Filtrar por",
+              "es": "Filter by",
+              "pr": "Filtrar por"
+            },
+            "description": {
+              "es": "Filtro a aplicar para realizar la consulta",
+              "en": "Filter to apply to perform the query",
+              "pr": "Filtro a ser aplicado para realizar a consulta"
+            },
+            "id": "filter_by",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "10",
+            "title": {
+              "en": "Quantity",
+              "es": "Cantidad",
+              "pr": "Quantia"
+            },
+            "description": {
+              "es": "Cantidad de items a obtener. Devolvera el top de items de la consulta.",
+              "en": "Number of items to obtain. It will return the top items of the query",
+              "pr": "Número de itens a serem obtidos. Ele retornará os principais itens da consulta"
+            },
+            "id": "top",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": "session",
             "title": {
               "en": "session",
@@ -395,6 +448,59 @@
             },
             "id": "drive_id",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "lastModifiedDateTime desc",
+            "title": {
+              "en": "Order by",
+              "es": "Ordenar por",
+              "pr": "Ordenar por"
+            },
+            "description": {
+              "es": "Parámetros para ordenar los resultados de la consulta realizada",
+              "en": "Parameters to order the results of the query made",
+              "pr": "Parâmetros para ordenar os resultados da consulta realizada"
+            },
+            "help": {
+              "es": "Works for name, size, and lastModifiedDateTime fields.",
+              "en": "Funciona para los campos de name, size y lastModifiedDateTime.",
+              "pr": "Funciona para campos de name, size e lastModifiedDateTime."
+            },
+            "id": "order_by",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "name eq 'file.txt'",
+            "title": {
+              "en": "Filtrar por",
+              "es": "Filter by",
+              "pr": "Filtrar por"
+            },
+            "description": {
+              "es": "Filtro a aplicar para realizar la consulta",
+              "en": "Filter to apply to perform the query",
+              "pr": "Filtro a ser aplicado para realizar a consulta"
+            },
+            "id": "filter_by",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "10",
+            "title": {
+              "en": "Quantity",
+              "es": "Cantidad",
+              "pr": "Quantia"
+            },
+            "description": {
+              "es": "Cantidad de items a obtener. Devolvera el top de items de la consulta.",
+              "en": "Number of items to obtain. It will return the top items of the query",
+              "pr": "Número de itens a serem obtidos. Ele retornará os principais itens da consulta"
+            },
+            "id": "top",
+            "css": "col-md-6"
           },
           {
             "type": "input",
