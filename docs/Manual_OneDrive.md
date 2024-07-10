@@ -15,28 +15,6 @@ To install the module in Rocketbot Studio, it can be done in two ways:
 1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
 2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
-## How to use this module
-
-Before using this module, you need to register your app in the Azure App Registrations portal.
-
-1. Sign in to the Azure portal (Applications Registration: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
-2. Select "New registration".
-3. Under “Supported account types” supported choose:
-    - "Accounts in any organizational directory (any Azure AD directory: multi-tenant) and personal Microsoft accounts (such as Skype or Xbox)" for this case use Tenant ID = **common**.
-    - "Only accounts from this organizational directory (only this account: single tenant) for this case use application-specific **Tenant ID**.
-    - "Personal Microsoft accounts only" for this case use use Tenant ID = **consumers**.
-4. Set the redirect uri (Web) as: https://localhost:5001/ and click "Register".
-5. Copy the application (client) ID. You will need this value.
-6. Under "Certificates and secrets", generate a new client secret. Set the expiration 
-(preferably 24 months). Copy the VALUE of the created client secret (NOT the Secret ID). It will hide after a few minutes.
-7. Under "API permissions", click "Add a permission", select "Microsoft Graph", then "Delegated permissions", find and select "Files.ReadWrite.All", and finally "Add permissions".
-8. Access code, generate code by entering the following link:
-https://login.microsoftonline.com/{**tenant**}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
-Replace within the link {tennat}, {client_id} and {redirect_uri}, with the data corresponding to the created application.
-9. If the operation was successful, the browser URL will change to: http://localhost:5001/?code={**CODE**}&state=12345#!/
-The value that appears in {CODE}, copy it and use it in the Rocketbot command in the "code" field to make the connection.
-
-Note: The browser will NOT load any pages.
 
 ## Description of the commands
 
@@ -137,4 +115,14 @@ Move an item to another folder
 |File ID|File ID to move|id|
 |Target folder ID|Folder ID where the file will be moved|id|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|moved|
+|session|Session ID|session|
+
+### Create Folder
+  
+Create a folder in where you want
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID|Folder ID where the folder will be created|id|
+|Name |Name that will receive the created folder|id|
+|Result|Variable to store result.|new|
 |session|Session ID|session|
