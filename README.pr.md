@@ -46,7 +46,10 @@ Excluir um arquivo
 Mover um arquivo para outra pasta
 
 10. Criar pasta  
-Cria uma pasta em onde se indique  
+Cria uma pasta em onde se indique
+
+11. Criar pasta compartilhada  
+Cria uma pasta em uma pasta compartilhada  
 
 
 

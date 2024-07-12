@@ -46,7 +46,10 @@ Delete an item
 Move an item to another folder
 
 10. Create Folder  
-Create a folder in where you want  
+Create a folder in where you want
+
+11. Create Shared Folder  
+Create a folder in a shared folder  
 
 
 

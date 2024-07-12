@@ -46,7 +46,10 @@ Borrar un archivo
 Mover un archivo a otra carpeta
 
 10. Crear carpeta  
-Crea una carpeta en donde se indique  
+Crea una carpeta en donde se indique
+
+11. Crear carpeta compartida  
+Crea una carpeta en una carpeta compartida  
 
 
 
