@@ -408,12 +408,35 @@ class OneDrive:
 
             try:
                 payload = {"name": f"{name}", "folder": { }, "@microsoft.graph.conflictBehavior": "rename"}
-                
                 response = requests.post(url, json=payload, headers=headers)
-                
                 if not response:
                     return False
-
                 return True
             except:
+                print(f"Error: {response.status_code}, {response.text}")
                 return response
+            
+    def new_folder_shared(self, drive_id, parent_item_id, name="NewFolder"):
+        """Create new folder in a shared folder in OneDrive"""
+        
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token,
+        }
+
+        if not parent_item_id:
+            url = f"https://graph.microsoft.com/v1.0/drives/{drive_id}/root/children"
+        else:
+            url = f"https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{parent_item_id}/children"
+
+        payload = {
+            "name": name,
+            "folder": {},
+            "@microsoft.graph.conflictBehavior": "rename"
+        }
+
+        try:
+            response = requests.post(url, json=payload, headers=headers)
+            return response.json()
+        except Exception as e:
+            print(f"Error: {response.status_code}, {response.text}")
+            return False

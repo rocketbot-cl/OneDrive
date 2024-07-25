@@ -309,4 +309,3 @@ if module == "newFolderSharedFolder":
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
-    
