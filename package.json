@@ -1378,9 +1378,9 @@
               "pr": "ID do disco compartilhado (Opcional)"
             },
             "help": {
-              "es": "Utilizar cuando los archivos a listar se encuentren en una carpeta compartida.",
-              "en": "Use when the files to be listed are in a shared folder.",
-              "pr": "Use quando os arquivos a serem listados estiverem em uma pasta compartilhada."
+              "es": "Utilizar cuando la carpeta se encuentre en una carpeta compartida.",
+              "en": "Use when the folder is in a shared folder.",
+              "pr": "Use quando a pasta estiver em uma pasta compartilhada."
             },
             "id": "drive_id",
             "css": "col-md-12"
