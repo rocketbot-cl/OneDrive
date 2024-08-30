@@ -154,8 +154,8 @@ Create a folder in where you want
 Create a folder in a shared folder
 |Parameters|Description|example|
 | --- | --- | --- |
-|Folder ID|Folder ID where the folder will be created|id|
-|Shared Drive ID (Optional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Folder ID|Is the remote_item_id obtained from the List Shared Items command|id|
+|Shared Drive ID|Is the parent_drive_id obtained from the List Shared Items command|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
 |Name |Name that will receive the created folder|id|
 |Result|Variable to store result.|new|
 |session|Session ID|session|

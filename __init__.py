@@ -132,6 +132,7 @@ if module == "getItemsSharedWithMe":
                     'name': folder['name'],
                     'id': folder['id'],
                     'parent_drive_id': folder['remoteItem']['parentReference']['driveId'],
+                    'remote_item_id': folder['remoteItem']['id'],
                     'lastModifiedDateTime': folder['lastModifiedDateTime']
                 }
                 folders.append(dict_folder)

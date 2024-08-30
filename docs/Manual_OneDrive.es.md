@@ -15,6 +15,7 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 1. Manual: __Descargar__ el archivo .zip y descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, refresca el navegador para poder utilizar el nuevo modulo.
 2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
 
+
 ## Como usar este modulo
 
 Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Azure App Registrations. 
@@ -155,8 +156,8 @@ Crea una carpeta en donde se indique
 Crea una carpeta en una carpeta compartida
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|ID de la carpeta|ID de la ubicación en que se desea crear la carpeta|id|
-|ID de Disco Compartido (Opcional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|ID de la carpeta|Es el remote_item_id que se obtiene del comando Listar items compartidos |id|
+|ID de Disco Compartido|Es el parent_drive_id que se obtiene del comando Listar items compartidos |b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
 |Nombre |Nombre que recibirá la carpeta creada|id|
 |Resultado|Variable para guardar resultado.|new|
 |session|Identificador de sesión|session|

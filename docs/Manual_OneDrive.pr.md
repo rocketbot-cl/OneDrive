@@ -155,8 +155,8 @@ Cria uma pasta em onde se indique
 Cria uma pasta em uma pasta compartilhada
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID da pasta|ID da pasta onde a pasta será criada|id|
-|ID do disco compartilhado (Opcional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|ID da pasta|É o remote_item_id obtido do comando Listar itens compartilhados|id|
+|ID do disco compartilhado|É o parent_drive_id obtido do comando Listar itens compartilhados|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
 |Nome |Nome que receberá a pasta criada|id|
 |Resultado|Variável para armazenar resultado.|new|
 |session|ID da sessão|session|

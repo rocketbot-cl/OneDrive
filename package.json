@@ -1361,10 +1361,15 @@
               "en": "Folder ID",
               "pr": "ID da pasta"
             },
+            "help": {
+              "es": "ID de la carpeta compartida donde crear la nueva carpeta",
+              "en": "Shared Folder ID where the new folder will be created",
+              "pr": "ID da pasta compartilhada onde criar a nova pasta"
+            },
             "description": {
-              "es": "ID de la ubicación en que se desea crear la carpeta",
-              "en": "Folder ID where the folder will be created",
-              "pr": "ID da pasta onde a pasta será criada"
+              "es": "Es el remote_item_id que se obtiene del comando Listar items compartidos ",
+              "en": "Is the remote_item_id obtained from the List Shared Items command",
+              "pr": "É o remote_item_id obtido do comando Listar itens compartilhados"
             },
             "id": "item_id",
             "css": "col-md-12"
@@ -1373,14 +1378,19 @@
             "type": "input",
             "placeholder": "b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J",
             "title": {
-              "es": "ID de Disco Compartido (Opcional)",
-              "en": "Shared Drive ID (Optional)",
-              "pr": "ID do disco compartilhado (Opcional)"
+              "es": "ID de Disco Compartido",
+              "en": "Shared Drive ID",
+              "pr": "ID do disco compartilhado"
             },
             "help": {
-              "es": "Utilizar cuando la carpeta se encuentre en una carpeta compartida.",
-              "en": "Use when the folder is in a shared folder.",
-              "pr": "Use quando a pasta estiver em uma pasta compartilhada."
+              "es": "ID del drive donde se encuentra la carpeta compartida.",
+              "en": "Shared Drive ID where the folder is located.",
+              "pr": "ID do disco compartilhado onde a pasta está localizada."
+            },
+            "description": {
+              "es": "Es el parent_drive_id que se obtiene del comando Listar items compartidos ",
+              "en": "Is the parent_drive_id obtained from the List Shared Items command",
+              "pr": "É o parent_drive_id obtido do comando Listar itens compartilhados"
             },
             "id": "drive_id",
             "css": "col-md-12"
