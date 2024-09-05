@@ -43,7 +43,13 @@ Upload an item to a shared folder
 Delete an item
 
 9. Move item  
-Move an item to another folder  
+Move an item to another folder
+
+10. Create Folder  
+Create a folder in where you want
+
+11. Create Shared Folder  
+Create a folder in a shared folder  
 
 
 

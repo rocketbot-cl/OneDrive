@@ -32,7 +32,7 @@ Antes de usar este módulo, você precisa registrar seu aplicativo no portal de 
 segredos", gere um novo segredo do cliente. Defina a validade (de preferência 24 meses). Copie o VALUE do segredo do cliente criado (NÃO o ID do segredo). Ele vai esconder depois de alguns minutos.
 7. Em "Permissões de API", clique em "Adicionar uma permissão", selecione "Microsoft Graph", depois "Permissões delegadas", localize e selecione "Arquivos.ReadWrite.All" e, finalmente, "Adicionar permissões".
 8. Acesse o código, gere o código entrando no seguinte link:
-https://login.microsoftonline.com/{**tenant**}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
 Substitua no link {tennat}, {client_id} e {redirect_uri}, pelos dados correspondentes ao aplicativo criado.
 9. Se a operação for bem-sucedida, a URL do navegador será alterada para: http://localhost:5001/?code={**CODE**}&state=12345#!/
 O valor que aparece em {CODE}, copie-o e use-o no comando Rocketbot no campo 
@@ -138,4 +138,25 @@ Mover um arquivo para outra pasta
 |ID do arquivo|ID do arquivo para mover|id|
 |ID da pasta de destino|ID da pasta onde o arquivo será movido|id|
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|moved|
+|session|ID da sessão|session|
+
+### Criar pasta
+  
+Cria uma pasta em onde se indique
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID da pasta|ID da pasta onde a pasta será criada|id|
+|Nome |Nome que receberá a pasta criada|id|
+|Resultado|Variável para armazenar resultado.|new|
+|session|ID da sessão|session|
+
+### Criar pasta compartilhada
+  
+Cria uma pasta em uma pasta compartilhada
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID da pasta|É o remote_item_id obtido do comando Listar itens compartilhados|id|
+|ID do disco compartilhado|É o parent_drive_id obtido do comando Listar itens compartilhados|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Nome |Nome que receberá a pasta criada|id|
+|Resultado|Variável para armazenar resultado.|new|
 |session|ID da sessão|session|

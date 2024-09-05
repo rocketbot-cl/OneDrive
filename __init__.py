@@ -132,6 +132,7 @@ if module == "getItemsSharedWithMe":
                     'name': folder['name'],
                     'id': folder['id'],
                     'parent_drive_id': folder['remoteItem']['parentReference']['driveId'],
+                    'remote_item_id': folder['remoteItem']['id'],
                     'lastModifiedDateTime': folder['lastModifiedDateTime']
                 }
                 folders.append(dict_folder)
@@ -289,6 +290,23 @@ if module == "newFolder":
     except Exception as e:
         traceback.print_exc()
         SetVar(new, res)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "newFolderSharedFolder":
+    import traceback
+    drive_id = GetParams("drive_id")
+    item_id = GetParams("item_id")
+    name = GetParams("name")
+    new = GetParams("new")
+    
+    try:
+        res = mod_OneDrive_session[session].new_folder_shared(drive_id, item_id, name)
+        SetVar(new, res)
+    except Exception as e:
+        traceback.print_exc()
+        SetVar(new, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e

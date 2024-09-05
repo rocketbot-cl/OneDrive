@@ -32,7 +32,7 @@ Antes de usar este modulo, es necesario registrar tu aplicación en el portal de
 6. Dentro de "Certificados y secretos", genere un nuevo secreto de cliente. Establezca la caducidad (preferiblemente 24 meses). Copie el VALOR del secreto de cliente creado (NO el ID de Secreto). El mismo se ocultará al cabo de unos minutos.
 7. Dentro de "Permisos de API", haga click en "Agregar un permiso", seleccione "Microsoft Graph", luego "Permisos delegados", busque y seleccione "Files.ReadWrite.All", y por ultimo "Agregar permisos".
 8. Codigo de acceso, generar codigo ingresando al siguiente link:
-https://login.microsoftonline.com/{**tenant**}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
 Reemplazar dentro del link {tennat}, {client_id} y {redirect_uri}, por los datos correspondientes a la applicación creada.
 9. Si la operación tuvo exito, la URL del navedador cambiara por: http://localhost:5001/?code={**CODE**}&state=12345#!/ 
 El valor que figurara en 
@@ -139,4 +139,25 @@ Mover un archivo a otra carpeta
 |ID del archivo|ID del archivo que se desea mover|id|
 |ID de la carpeta de destino|ID de la carpeta donde se movera el archivo|id|
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|moved|
+|session|Identificador de sesión|session|
+
+### Crear carpeta
+  
+Crea una carpeta en donde se indique
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID de la carpeta|ID de la ubicación en que se desea crear la carpeta|id|
+|Nombre |Nombre que recibirá la carpeta creada|id|
+|Resultado|Variable para guardar resultado.|new|
+|session|Identificador de sesión|session|
+
+### Crear carpeta compartida
+  
+Crea una carpeta en una carpeta compartida
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID de la carpeta|Es el remote_item_id que se obtiene del comando Listar items compartidos |id|
+|ID de Disco Compartido|Es el parent_drive_id que se obtiene del comando Listar items compartidos |b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Nombre |Nombre que recibirá la carpeta creada|id|
+|Resultado|Variable para guardar resultado.|new|
 |session|Identificador de sesión|session|

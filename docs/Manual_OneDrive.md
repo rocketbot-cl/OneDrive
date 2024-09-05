@@ -31,7 +31,7 @@ Before using this module, you need to register your app in the Azure App Registr
 (preferably 24 months). Copy the VALUE of the created client secret (NOT the Secret ID). It will hide after a few minutes.
 7. Under "API permissions", click "Add a permission", select "Microsoft Graph", then "Delegated permissions", find and select "Files.ReadWrite.All", and finally "Add permissions".
 8. Access code, generate code by entering the following link:
-https://login.microsoftonline.com/{**tenant**}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
 Replace within the link {tennat}, {client_id} and {redirect_uri}, with the data corresponding to the created application.
 9. If the operation was successful, the browser URL will change to: http://localhost:5001/?code={**CODE**}&state=12345#!/
 The value that appears in {CODE}, copy it and use it in the Rocketbot command in the "code" field to make the connection.
@@ -137,4 +137,25 @@ Move an item to another folder
 |File ID|File ID to move|id|
 |Target folder ID|Folder ID where the file will be moved|id|
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|moved|
+|session|Session ID|session|
+
+### Create Folder
+  
+Create a folder in where you want
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID|Folder ID where the folder will be created|id|
+|Name |Name that will receive the created folder|id|
+|Result|Variable to store result.|new|
+|session|Session ID|session|
+
+### Create Shared Folder
+  
+Create a folder in a shared folder
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID|Is the remote_item_id obtained from the List Shared Items command|id|
+|Shared Drive ID|Is the parent_drive_id obtained from the List Shared Items command|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Name |Name that will receive the created folder|id|
+|Result|Variable to store result.|new|
 |session|Session ID|session|
