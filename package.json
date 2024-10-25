@@ -7,7 +7,7 @@
     "pr": "Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem"
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -224,6 +224,7 @@
               "en": "Variable name without {}",
               "pr": "Nome da variável sem {}"
             },
+            "remove_vars": true,
             "id": "res",
             "css": "col-md-12"
           },
@@ -356,6 +357,7 @@
               "en": "Variable name without {}",
               "pr": "Nome da variável sem {}"
             },
+            "remove_vars": true,
             "id": "res",
             "css": "col-md-12"
           },
