@@ -278,6 +278,24 @@ if module == "moveItem":
         PrintException()
         raise e
 
+if module == "copyItem":
+    item_id = GetParams("item_id")
+    target_id = GetParams("target_id")
+    copied = GetParams("copied")
+    
+    if not item_id or not target_id:
+        raise Exception("Both the item ID and target folder ID are required!")
+    
+    try:
+        res = mod_OneDrive_session[session].copy_item(item_id, target_id)
+        
+        SetVar(copied, res)
+    except Exception as e:
+        SetVar(copied, str(e))
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
 if module == "newFolder":
     import traceback
     item_id = GetParams("item_id")

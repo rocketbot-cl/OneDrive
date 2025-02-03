@@ -45,10 +45,13 @@ Excluir um arquivo
 9. Mover arquivo  
 Mover um arquivo para outra pasta
 
-10. Criar pasta  
+10. Copiar arquivo  
+Copiar um arquivo para outra pasta
+
+11. Criar pasta  
 Cria uma pasta em onde se indique
 
-11. Criar pasta compartilhada  
+12. Criar pasta compartilhada  
 Cria uma pasta em uma pasta compartilhada  
 
 
