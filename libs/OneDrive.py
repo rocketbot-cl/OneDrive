@@ -393,6 +393,32 @@ class OneDrive:
         except:
             return response
 
+    def copy_item(self, item_id, parent_id):
+        """ Copies a DriveItem to another location within the same drive.
+        
+        :param item_id: ID of the item to be copied.
+        :param parent_id: ID of the target folder.
+        :return: Response JSON if the copy is successful
+        """
+        try:
+            headers = {
+                'Authorization': 'Bearer ' + self.access_token,
+            }
+            url = f"https://graph.microsoft.com/v1.0/me/drive/items/{item_id}/copy"
+            
+            payload = {"parentReference": {"id": "{parent_id}".format(parent_id=parent_id)}}
+            
+            response = requests.post(url, json=payload, headers=headers)
+            
+            if response.status_code == 202 or response.status_code == 200:
+                return True
+            else:
+                print(response.json())
+                return False
+        except Exception as e:
+            PrintException(e)
+            return False
+
     def new_folder(self, item_id=None, name="NewFolder"):
             """Create new folder in OneDrive"""
             

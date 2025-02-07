@@ -140,6 +140,16 @@ Mover um arquivo para outra pasta
 |Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|moved|
 |session|ID da sessão|session|
 
+### Copiar arquivo
+  
+Copiar um arquivo para outra pasta
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID do arquivo|ID do arquivo para mover|id|
+|ID da pasta de destino|ID da pasta onde o arquivo será movido. Somente é possivel mover itens dentro do mesmo Drive|id|
+|Resultado|Variável para armazenar resultado. Se a tarefa for bem sucedida, retornará True, caso contrário, retornará False|copied|
+|session|ID da sessão|session|
+
 ### Criar pasta
   
 Cria uma pasta em onde se indique

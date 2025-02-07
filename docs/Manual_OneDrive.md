@@ -139,6 +139,16 @@ Move an item to another folder
 |Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|moved|
 |session|Session ID|session|
 
+### Copy item
+  
+Copy an item to another folder
+|Parameters|Description|example|
+| --- | --- | --- |
+|File ID|File ID to move|id|
+|Target folder ID|Folder ID where the file will be moved. You can only move items within the same Drive|id|
+|Result|Variable to store result. If the task is successful, it will return True, otherwise it will return False|copied|
+|session|Session ID|session|
+
 ### Create Folder
   
 Create a folder in where you want

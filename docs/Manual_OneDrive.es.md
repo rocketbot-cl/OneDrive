@@ -141,6 +141,16 @@ Mover un archivo a otra carpeta
 |Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|moved|
 |session|Identificador de sesión|session|
 
+### Copiar archivo
+  
+Copia un archivo a otra carpeta
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID del archivo|ID del archivo que se desea mover|id|
+|ID de la carpeta de destino|ID de la carpeta donde se movera el archivo. Solo se puede mover elementos dentro del mismo Drive|id|
+|Resultado|Variable para guardar resultado. Si la operacion es exitosa retornara True, caso contrario sera False|copied|
+|session|Identificador de sesión|session|
+
 ### Crear carpeta
   
 Crea una carpeta en donde se indique

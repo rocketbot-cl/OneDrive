@@ -45,10 +45,13 @@ Delete an item
 9. Move item  
 Move an item to another folder
 
-10. Create Folder  
+10. Copy item  
+Copy an item to another folder
+
+11. Create Folder  
 Create a folder in where you want
 
-11. Create Shared Folder  
+12. Create Shared Folder  
 Create a folder in a shared folder  
 
 
