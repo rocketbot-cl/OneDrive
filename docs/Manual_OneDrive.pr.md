@@ -86,6 +86,16 @@ Listar itens em uma pasta
 |Resultado|Nome da variável para salvar o resultado|res|
 |session|ID da sessão|session|
 
+### Obter dados de uma pasta ou arquivo
+  
+Listar itens em uma pasta ou arquivo, como o tamanho, a data de criação ou a data de modificação
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID da pasta ou arquivo|ID da pasta ou arquivo de onde os detalhes serão extraídos|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
+|ID do disco compartilhado (Opcional)|Usar quando os arquivos ou pastas para serem listadas estão na pasta compartilhada.|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Resultado|Nome da variável para salvar o resultado|res|
+|session|ID da sessão|session|
+
 ### Baixar arquivo
   
 Baixar arquivo
