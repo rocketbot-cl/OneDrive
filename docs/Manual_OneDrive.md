@@ -85,6 +85,16 @@ List items from a folder
 |Result|Variable name to save the result|res|
 |session|Session ID|session|
 
+### Get data from a folder or file
+  
+List information from a folder or file, such as size, creation date or
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder or file ID|ID of the folder or file from which the details will be extracted|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
+|Shared Drive ID (Optional)|Use when the files or folders to be listed are in a shared folder.|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Result|Variable name to save the result|res|
+|session|Session ID|session|
+
 ### Download item
   
 Download an item

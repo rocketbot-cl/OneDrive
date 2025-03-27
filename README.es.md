@@ -30,28 +30,31 @@ Listar los items que me han compartido
 4. Listar items de una carpeta  
 Listar items de una carpeta
 
-5. Descargar archivo  
+5. Obtener datos de una carpeta o archivo  
+Lista información de una carpeta o archivo en específico, como el tamaño, la fecha de creación o la última modificación
+
+6. Descargar archivo  
 Descarga un archivo
 
-6. Subir archivo  
+7. Subir archivo  
 Sube un archivo
 
-7. Subir archivo a carpeta compartida  
+8. Subir archivo a carpeta compartida  
 Sube un archivo a unacarpeta compartida
 
-8. Borrar archivo  
+9. Borrar archivo  
 Borrar un archivo
 
-9. Mover archivo  
+10. Mover archivo  
 Mover un archivo a otra carpeta
 
-10. Copiar archivo  
+11. Copiar archivo  
 Copia un archivo a otra carpeta
 
-11. Crear carpeta  
+12. Crear carpeta  
 Crea una carpeta en donde se indique
 
-12. Crear carpeta compartida  
+13. Crear carpeta compartida  
 Crea una carpeta en una carpeta compartida  
 
 

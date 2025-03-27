@@ -87,6 +87,16 @@ Listar items de una carpeta
 |Resultado|Nombre de la variable donde se guardará el resultado|res|
 |session|Identificador de sesión|session|
 
+### Obtener datos de una carpeta o archivo
+  
+Lista información de una carpeta o archivo en específico, como el tamaño, la fecha de creación o la última modificación
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID de la carpeta o archivo|ID de la carpeta o archivo de la que se extraerán los detalles|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
+|ID de Disco Compartido (Opcional)|Utilizar cuando los archivos o carpetas se encuentran en una carpeta compartida.|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Resultado|Nombre de la variable donde se guardará el resultado|res|
+|session|Identificador de sesión|session|
+
 ### Descargar archivo
   
 Descarga un archivo

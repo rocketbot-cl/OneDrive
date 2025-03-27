@@ -165,6 +165,36 @@ class OneDrive:
                         
         return result
 
+    def get_info_items(self, item_id, drive_id=None):
+        """Get details of a specific file or folder, whether shared or not.
+        
+        Parameters
+        ----------
+        item_id : str
+            The ID of the item (file or folder).
+        drive_id : str, optional
+            The ID of the drive if the item is from a shared drive. Default is None.
+
+        Returns
+        -------
+        dict
+            Details of the file or folder
+        """
+        
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token
+        }
+        if drive_id:
+            url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}?$select=name,webUrl,size,lastModifiedDateTime,createdDateTime".format(drive_id=drive_id, item_id=item_id)
+        else:
+            url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}?$select=name,webUrl,size,lastModifiedDateTime,createdDateTime".format(item_id=item_id)
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            json_response = json.loads(response.text)
+            return json_response
+        else:
+            return {'error': f"Failed to fetch item details. Status code: {response.status_code}, Response: {response.text}"}
+    
     def download_item(self, item_id, folder_path, drive_id=None):
         headers = {
             'Authorization': 'Bearer ' + self.access_token

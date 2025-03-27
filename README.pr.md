@@ -30,28 +30,31 @@ Listar os itens que foram partilhados comigo
 4. Listar itens em uma pasta  
 Listar itens em uma pasta
 
-5. Baixar arquivo  
+5. Obter dados de uma pasta ou arquivo  
+Listar itens em uma pasta ou arquivo, como o tamanho, a data de criação ou a data de modificação
+
+6. Baixar arquivo  
 Baixar arquivo
 
-6. Subir arquivo  
+7. Subir arquivo  
 Subir arquivo
 
-7. Subir arquivo no drive compartilhado  
+8. Subir arquivo no drive compartilhado  
 Subir arquivo
 
-8. Excluir arquivo  
+9. Excluir arquivo  
 Excluir um arquivo
 
-9. Mover arquivo  
+10. Mover arquivo  
 Mover um arquivo para outra pasta
 
-10. Copiar arquivo  
+11. Copiar arquivo  
 Copiar um arquivo para outra pasta
 
-11. Criar pasta  
+12. Criar pasta  
 Cria uma pasta em onde se indique
 
-12. Criar pasta compartilhada  
+13. Criar pasta compartilhada  
 Cria uma pasta em uma pasta compartilhada  
 
 

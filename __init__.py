@@ -177,6 +177,33 @@ if module == "listItems":
         PrintException()
         raise e
 
+if module == "getInfoItems":
+    item_id = GetParams("item_id")
+    drive_id = GetParams("drive_id")
+    res = GetParams("res")
+    try:
+        if drive_id and drive_id != "":
+            response = mod_OneDrive_session[session].get_info_items(item_id, drive_id)
+        else:
+            response = mod_OneDrive_session[session].get_info_items(item_id)
+        if 'error' not in response:
+            item_dict = {
+                'name': response['name'],
+                'webUrl': response['webUrl'],
+                'size': response['size'],
+                'lastModifiedDateTime': response['lastModifiedDateTime'],
+                'createdDateTime': response['createdDateTime']
+            }
+            SetVar(res, item_dict)
+        else:
+            SetVar(res, response['error'])
+            
+    except Exception as e:
+        SetVar(res, response)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+    
 if module == "downloadItem":
     item_id = GetParams("item_id")
     drive_id = GetParams("drive_id")

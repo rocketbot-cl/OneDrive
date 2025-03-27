@@ -30,28 +30,31 @@ List shared with me items
 4. List items from a folder  
 List items from a folder
 
-5. Download item  
+5. Get data from a folder or file  
+List information from a folder or file, such as size, creation date or
+
+6. Download item  
 Download an item
 
-6. Upload item  
+7. Upload item  
 Upload an item
 
-7. Upload item to a shared folder  
+8. Upload item to a shared folder  
 Upload an item to a shared folder
 
-8. Delete item  
+9. Delete item  
 Delete an item
 
-9. Move item  
+10. Move item  
 Move an item to another folder
 
-10. Copy item  
+11. Copy item  
 Copy an item to another folder
 
-11. Create Folder  
+12. Create Folder  
 Create a folder in where you want
 
-12. Create Shared Folder  
+13. Create Shared Folder  
 Create a folder in a shared folder  
 
 
