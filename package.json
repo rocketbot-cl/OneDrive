@@ -565,7 +565,7 @@
     {
       "en": {
         "title": "Get data from a folder or file",
-        "description": "List information from a folder or file, such as size, creation date or",
+        "description": "List information from a folder or file, such as size, creation date or last modification",
         "title_options": "Select Option",
         "options": null
       },
