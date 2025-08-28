@@ -1,13 +1,13 @@
 {
   "author": "Nicolas Liendro - Juan Siro",
-  "description": "Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube",
+  "description": "This module allows you to connect to the OneDrive API, manage files and folders hosted in the cloud.",
   "description_lang": {
     "en": "This module allows you to connect to the OneDrive API, handle files and folders hosted in the cloud",
     "es": "Este módulo permite conectarse a la API de OneDrive, manejar archivos y carpetas alojados en la nube",
     "pr": "Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem"
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
