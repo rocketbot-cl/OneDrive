@@ -7,7 +7,7 @@
     "pr": "Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem"
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -428,9 +428,9 @@
               "pr": "ID da pasta"
             },
             "description": {
-              "es": "ID de la carpeta que se desea listar",
-              "en": "Folder ID to list",
-              "pr": "ID da pasta para listar"
+              "es": "ID de la carpeta que se desea listar,(puede ser un ID normal o el 'remote_item_id' de una carpeta compartida).",
+              "en": "ID of the folder to be listed (this can be a normal ID or the 'remote_item_id' of a shared folder)",
+              "pr": "ID da pasta a ser listada (pode ser um ID normal ou o 'remote_item_id' de uma pasta compartilhada)"
             },
             "id": "item_id",
             "css": "col-md-12"
@@ -443,10 +443,10 @@
               "en": "Shared Drive ID (Optional)",
               "pr": "ID do disco compartilhado (Opcional)"
             },
-            "help": {
-              "es": "Utilizar cuando los archivos a listar se encuentren en una carpeta compartida.",
-              "en": "Use when the files to be listed are in a shared folder.",
-              "pr": "Use quando os arquivos a serem listados estiverem em uma pasta compartilhada."
+            "description": {
+              "es": "Utilizar cuando los archivos a listar se encuentren en una carpeta compartida,(Puede ser el 'remote_drive_id'de una carpeta compartida.",
+              "en": "Use when the files to be listed are located in a shared folder (This can be the 'remote_drive_id' of a shared folder).",
+              "pr": "Utilize quando os arquivos a serem listados estiverem localizados em uma pasta compartilhada (este pode ser o 'remote_drive_id' de uma pasta compartilhada)."
             },
             "id": "drive_id",
             "css": "col-md-12"

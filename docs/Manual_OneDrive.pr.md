@@ -78,8 +78,8 @@ Listar os itens que foram partilhados comigo
 Listar itens em uma pasta
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID da pasta|ID da pasta para listar|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
-|ID do disco compartilhado (Opcional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|ID da pasta|ID da pasta a ser listada (pode ser um ID normal ou o 'remote_item_id' de uma pasta compartilhada)|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
+|ID do disco compartilhado (Opcional)|Utilize quando os arquivos a serem listados estiverem localizados em uma pasta compartilhada (este pode ser o 'remote_drive_id' de uma pasta compartilhada).|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
 |Ordenar por|Parâmetros para ordenar os resultados da consulta realizada|lastModifiedDateTime desc|
 |Filtrar por|Filtro a ser aplicado para realizar a consulta|name eq 'file.txt'|
 |Quantia|Número de itens a serem obtidos. Ele retornará os principais itens da consulta|10|

@@ -110,6 +110,11 @@ if module == "getRootItems":
                     'parent': folder['parentReference'],
                     'lastModifiedDateTime': folder['lastModifiedDateTime']
                 }
+                # Si es un acceso directo ("Add shortcut to My Files")
+                if 'remoteItem' in folder:
+                    dict_folder['remote_item_id'] = folder['remoteItem'].get('id')
+                    dict_folder['remote_drive_id'] = folder['remoteItem'].get('parentReference', {}).get('driveId')
+
                 folders.append(dict_folder)
         except:
             folders = response
