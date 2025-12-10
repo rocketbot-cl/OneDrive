@@ -79,8 +79,8 @@ Listar los items que me han compartido
 Listar items de una carpeta
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|ID de la carpeta|ID de la carpeta que se desea listar|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
-|ID de Disco Compartido (Opcional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|ID de la carpeta|ID de la carpeta que se desea listar,(puede ser un ID normal o el 'remote_item_id' de una carpeta compartida).|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
+|ID de Disco Compartido (Opcional)|Utilizar cuando los archivos a listar se encuentren en una carpeta compartida,(Puede ser el 'remote_drive_id'de una carpeta compartida.|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
 |Ordenar por|Parámetros para ordenar los resultados de la consulta realizada|lastModifiedDateTime desc|
 |Filter by|Filtro a aplicar para realizar la consulta|name eq 'file.txt'|
 |Cantidad|Cantidad de items a obtener. Devolvera el top de items de la consulta.|10|

@@ -31,7 +31,7 @@ List shared with me items
 List items from a folder
 
 5. Get data from a folder or file  
-List information from a folder or file, such as size, creation date or
+List information from a folder or file, such as size, creation date or last modification
 
 6. Download item  
 Download an item

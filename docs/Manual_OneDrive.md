@@ -77,8 +77,8 @@ List shared with me items
 List items from a folder
 |Parameters|Description|example|
 | --- | --- | --- |
-|Folder ID|Folder ID to list|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
-|Shared Drive ID (Optional)||b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
+|Folder ID|ID of the folder to be listed (this can be a normal ID or the 'remote_item_id' of a shared folder)|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
+|Shared Drive ID (Optional)|Use when the files to be listed are located in a shared folder (This can be the 'remote_drive_id' of a shared folder).|b!4Zasr9LvqUiwt4OZ8irYdG3gm207yiJPkTu3c6KrXmFKVLpG3_FZTrGY-Gxn974J|
 |Order by|Parameters to order the results of the query made|lastModifiedDateTime desc|
 |Filtrar por|Filter to apply to perform the query|name eq 'file.txt'|
 |Quantity|Number of items to obtain. It will return the top items of the query|10|
@@ -87,7 +87,7 @@ List items from a folder
 
 ### Get data from a folder or file
   
-List information from a folder or file, such as size, creation date or
+List information from a folder or file, such as size, creation date or last modification
 |Parameters|Description|example|
 | --- | --- | --- |
 |Folder or file ID|ID of the folder or file from which the details will be extracted|23XWM5ASR67M67S6KYNCV66KFMQFOTOPDL|
