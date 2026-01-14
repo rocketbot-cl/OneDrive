@@ -200,24 +200,50 @@ class OneDrive:
             'Authorization': 'Bearer ' + self.access_token
         }
         if drive_id:
-            url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}/".format(drive_id=drive_id, item_id=item_id)
+            url = "https://graph.microsoft.com/v1.0/drives/{drive_id}/items/{item_id}".format(drive_id=drive_id, item_id=item_id)
         else:
-            url = "https://graph.microsoft.com/v1.0//me/drive/items/{item_id}/".format(item_id=item_id)
-        response = requests.get(url, headers=headers)
-        json_response = json.loads(response.text)
-        try:
-            url_download = json_response['@microsoft.graph.downloadUrl']
-            filename = json_response['name']
-            response_download = requests.get(url_download, headers=headers)
-            # print(response_download.json()
-            if not response_download:
-                return False
+            url = "https://graph.microsoft.com/v1.0/me/drive/items/{item_id}".format(item_id=item_id)
 
-            with open(folder_path + os.sep + filename, 'wb') as file:
-                file.write(response_download.content)
-            return True
-        except:
+        response = requests.get(url, headers=headers)
+        try:
+            json_response = response.json()
+        except Exception:
+            return {'error': 'invalid_json', 'status_code': response.status_code, 'text': response.text}
+
+        if 'error' in json_response:
             return json_response
+
+        try:
+            url_download = json_response.get('@microsoft.graph.downloadUrl')
+            if not url_download:
+                return {'error': 'no_download_url', 'response': json_response}
+
+            filename = json_response.get('name') or item_id
+
+            # downloadUrl is a pre-authenticated URL; do not send Authorization header
+            response_download = requests.get(url_download, stream=True)
+
+            if not response_download.ok:
+                return {'error': 'download_failed', 'status_code': response_download.status_code, 'text': response_download.text}
+
+            # ensure destination folder exists
+            try:
+                os.makedirs(folder_path, exist_ok=True)
+            except Exception as e:
+                return {'error': 'mkdir_failed', 'exception': str(e)}
+
+            file_path = os.path.join(folder_path, filename)
+            try:
+                with open(file_path, 'wb') as file:
+                    for chunk in response_download.iter_content(chunk_size=8192):
+                        if chunk:
+                            file.write(chunk)
+            except Exception as e:
+                return {'error': 'write_failed', 'exception': str(e)}
+
+            return True
+        except Exception as e:
+            return {'exception': str(e), 'response': json_response}
 
     def upload_item(self, file_path, drive_id, folder_path, conflict):
         headers = {
