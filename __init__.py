@@ -35,7 +35,7 @@ if cur_path not in sys.path:
 """
     Obtengo el modulo que fue invocado
 """
-from OneDrive import OneDrive
+from OneDrive import OneDrive, OneDriveOAuthError, OneDriveReauthenticationRequired
 
 module = GetParams("module")
 
@@ -58,6 +58,9 @@ if module == "setCredentials":
     redirect_uri = GetParams("redirect_uri")
     code = GetParams("code")
     tenant = GetParams("tenant")
+    auth_type = GetParams("auth_type") or "delegated"
+    user_id = GetParams("user_id") or None
+    target_drive_id = GetParams("target_drive_id") or None
     res = GetParams("res")
     
     if session == '':
@@ -66,23 +69,35 @@ if module == "setCredentials":
         credentials_filename = "credentials_{s}.json".format(s=session)
     
     path_credentials = base_path + "modules" + os.sep + "OneDrive" + os.sep + credentials_filename
-    mod_OneDrive_session[session] = OneDrive(client_id=client_id, client_secret=client_secret, tenant=tenant, redirect_uri=redirect_uri, 
-                                             path_credentials=path_credentials)
     try:
-        try:
-            with open(path_credentials) as json_file:
-                data = json.load(json_file)
-            auth_code = {'refresh_token': data['refresh_token']}
-            grant_type = 'refresh_token'
-            response = mod_OneDrive_session[session].get_token(auth_code, grant_type)
-        except IOError:
-            grant_type = 'authorization_code'
-            auth_code = {'code': code}
-            response = mod_OneDrive_session[session].get_token(auth_code, grant_type)
-        is_connected = mod_OneDrive_session[session].create_tokens_file(response)
-        SetVar(res,is_connected)
+        mod_OneDrive_session[session] = OneDrive(
+            client_id=client_id,
+            client_secret=client_secret,
+            tenant=tenant,
+            redirect_uri=redirect_uri,
+            path_credentials=path_credentials,
+            auth_type=auth_type,
+            user_id=user_id,
+            drive_id=target_drive_id,
+        )
+        mod_OneDrive_session[session].connect(code=code)
+        SetVar(res, True)
+    except OneDriveReauthenticationRequired as e:
+        error_result = e.as_dict()
+        SetVar(res, error_result)
+        print(json.dumps(error_result, ensure_ascii=False))
+        raise e
+    except OneDriveOAuthError as e:
+        error_result = e.as_dict()
+        SetVar(res, error_result)
+        print(json.dumps(error_result, ensure_ascii=False))
+        raise e
     except Exception as e:
-        SetVar(res, response)
+        error_result = {
+            "error": "onedrive_connection_error",
+            "error_description": str(e),
+        }
+        SetVar(res, error_result)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
