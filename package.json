@@ -7,7 +7,7 @@
     "pr": "Este módulo permite que se conecte à API do OneDrive, gerencie arquivos e pastas hospedados na nuvem"
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.8.6",
+  "version": "1.9.6",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -47,6 +47,32 @@
         "css": "modal-lg",
         "inputs": [
           {
+            "type": "select",
+            "placeholder": "--- Select ---",
+            "title": {
+              "es": "Tipo de autenticación",
+              "en": "Authentication type",
+              "pr": "Tipo de autenticação"
+            },
+            "description": {
+              "es": "Delegada conserva el comportamiento anterior. Aplicación usa client credentials y no depende de la contraseña del usuario.",
+              "en": "Delegated keeps the previous behavior. Application uses client credentials and does not depend on the user's password.",
+              "pr": "Delegada mantém o comportamento anterior. Aplicação usa client credentials e não depende da senha do usuário."
+            },
+            "options": [
+              {
+                "title": "Delegated (user)",
+                "value": "delegated"
+              },
+              {
+                "title": "Application (client credentials)",
+                "value": "application"
+              }
+            ],
+            "id": "auth_type",
+            "css": "col-md-12"
+          },
+          {
             "type": "input",
             "placeholder": "Your client_id",
             "title": {
@@ -80,16 +106,16 @@
           },
           {
             "type": "input",
-            "placeholder": "http://localhost:5000",
+            "placeholder": "http://localhost:5001",
             "title": {
               "es": "redirect_uri",
               "en": "redirect_uri",
               "pr": "redirect_uri"
             },
             "description": {
-              "es": "URL de redireccionamiento de la aplicación",
-              "en": "Application redirect URL",
-              "pr": "URL de redirecionamento do aplicativo"
+              "es": "Solo modo Delegado. Debe coincidir exactamente con la URI configurada en Azure.",
+              "en": "Delegated mode only. It must exactly match the URI configured in Azure.",
+              "pr": "Somente modo Delegado. Deve corresponder exatamente à URI configurada no Azure."
             },
             "id": "redirect_uri",
             "css": "col-md-12"
@@ -103,9 +129,9 @@
               "pr": "code"
             },
             "description": {
-                "es": "Dato obtenido al colocar la URL de autenticación. Revisa la documentación para más información",
-                "en": "Data obtained by placing the authentication URL. Check the documentation for more information",
-                "pr": "Dados obtidos colocando a URL de autenticação. Verifique a documentação para mais informações"
+                "es": "Solo modo Delegado. Dato obtenido al colocar la URL de autenticación. Revisa la documentación para más información",
+                "en": "Delegated mode only. Data obtained by placing the authentication URL. Check the documentation for more information",
+                "pr": "Somente modo Delegado. Dados obtidos colocando a URL de autenticação. Verifique a documentação para mais informações"
             },
             "id": "code",
             "css": "col-md-12"
@@ -128,6 +154,38 @@
           },
           {
             "type": "input",
+            "placeholder": "robot@test.com or object ID",
+            "title": {
+              "es": "Usuario objetivo (user_id)",
+              "en": "Target user (user_id)",
+              "pr": "Usuário de destino (user_id)"
+            },
+            "description": {
+              "es": "Solo modo Aplicación. UPN u Object ID del usuario cuyo OneDrive utilizará el robot. No es necesario si se informa target_drive_id.",
+              "en": "Application mode only. UPN or Object ID of the user whose OneDrive the robot will use. Not required when target_drive_id is provided.",
+              "pr": "Somente modo Aplicação. UPN ou Object ID do usuário cujo OneDrive será usado. Não é necessário quando target_drive_id é informado."
+            },
+            "id": "user_id",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "OneDrive drive ID",
+            "title": {
+              "es": "Drive objetivo (target_drive_id)",
+              "en": "Target drive (target_drive_id)",
+              "pr": "Drive de destino (target_drive_id)"
+            },
+            "description": {
+              "es": "Solo modo Aplicación. ID fijo del drive. Si se completa, tiene prioridad sobre user_id.",
+              "en": "Application mode only. Fixed drive ID. When provided, it takes precedence over user_id.",
+              "pr": "Somente modo Aplicação. ID fixo do drive. Quando informado, tem prioridade sobre user_id."
+            },
+            "id": "target_drive_id",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
             "placeholder": "connection",
             "title": {
               "es": "Resultado",
@@ -135,9 +193,9 @@
               "pr": "Resultado"
             },
             "description": {
-              "es": "Variable para guardar resultado. Si la conexion es exitosa retornara True, caso contrario sera False",
-              "en": "Variable to store result. If the connection is successful, it will return True, otherwise it will return False",
-              "pr": "Variável para armazenar resultado. Se a conexão for bem sucedida retornará True, caso contrário será False"
+              "es": "Variable para guardar el resultado. Devuelve True o un objeto con el detalle OAuth y la URL de reautorización.",
+              "en": "Variable to store the result. Returns True or an object with OAuth details and the reauthorization URL.",
+              "pr": "Variável para armazenar o resultado. Retorna True ou um objeto com detalhes OAuth e a URL de reautorização."
             },
             "help": {
               "es": "Nombre de variable sin {}",
