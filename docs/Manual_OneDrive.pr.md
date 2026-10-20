@@ -18,27 +18,302 @@ Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
 
 ## Como usar este módulo
 
-Antes de usar este módulo, você precisa registrar seu aplicativo no portal de Registros de Aplicativo do Azure.
+Antes de utilizar o módulo, é necessário registrar um aplicativo no [Microsoft Entra](https://entra.microsoft.com/) e selecionar o método de autenticação que o processo utilizará.
 
-1. Entre no portal do Azure (Registro de Aplicativos: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade ).
-2. Selecione "Novo registro".
-3. Em "Tipos de conta suportados", escolha:
-    - "Contas em qualquer diretório organizacional (qualquer diretório do Azure AD: multilocatário) e contas pessoais da Microsoft (como Skype ou Xbox)" para este caso, use ID de locatário = **common**.
-    - "Somente contas deste diretório organizacional (somente esta conta: locatário único) para este caso usam **ID de locatário específico** do aplicativo.
-    - "Somente contas pessoais da Microsoft" para este caso, use ID do locatário = **consumers**.
-4. Defina o redirecionamento uri (Web) como: https://localhost:5001/ e clique em "Registrar".
-5. Copie o ID do aplicativo (cliente). Você vai precisar desse valor.
-6. Em "Certificados e 
-segredos", gere um novo segredo do cliente. Defina a validade (de preferência 24 meses). Copie o VALUE do segredo do cliente criado (NÃO o ID do segredo). Ele vai esconder depois de alguns minutos.
-7. Em "Permissões de API", clique em "Adicionar uma permissão", selecione "Microsoft Graph", depois "Permissões delegadas", localize e selecione "Arquivos.ReadWrite.All" e, finalmente, "Adicionar permissões".
-8. Acesse o código, gere o código entrando no seguinte link:
-https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={**client_id**}&response_type=code&redirect_uri={**redirect_uri**}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
-Substitua no link {tennat}, {client_id} e {redirect_uri}, pelos dados correspondentes ao aplicativo criado.
-9. Se a operação for bem-sucedida, a URL do navegador será alterada para: http://localhost:5001/?code={**CODE**}&state=12345#!/
-O valor que aparece em {CODE}, copie-o e use-o no comando Rocketbot no campo 
-"code" para fazer a conexão.
+O módulo oferece suporte a duas modalidades:
 
-Nota: O navegador NÃO carregará nenhuma página.
+- **Delegated:** executa as operações em nome de um usuário.
+- **Application (app-only):** autentica diretamente o aplicativo por meio de `client_credentials`, sem iniciar sessão com um usuário.
+
+#### Comparação dos métodos de autenticação
+
+| Característica | Delegated | Application |
+|---|---|---|
+| Identidade utilizada | Usuário autenticado | Aplicativo registrado |
+| Permissão do Microsoft Graph | `Files.ReadWrite.All` - Delegated | `Files.ReadWrite.All` - Application |
+| Requer código de autorização | Sim | Não |
+| Requer URI de redirecionamento | Sim | Não |
+| Utiliza arquivo local de credenciais | Sim | Não |
+| Utiliza `refresh_token` | Sim | Não |
+| Pode ser afetada por uma alteração de senha | Sim | Não |
+| Requer `user_id` ou 
+`target_drive_id` | Não | Sim |
+| Permite listar “Compartilhados comigo” | Sim, com limitações | Não |
+
+As permissões `Files.ReadWrite.All - Delegated` e `Files.ReadWrite.All - Application` podem coexistir no mesmo aplicativo. Adicionar a permissão de aplicativo não requer a remoção da permissão delegada existente.
+
+
+### Autenticação delegada
+
+A autenticação delegada executa as operações em nome de um usuário e mantém o funcionamento das versões anteriores do módulo.
+
+#### Configuração no Microsoft Entra
+
+1. Acesse o [Microsoft Entra](https://entra.microsoft.com/).
+
+2. Abra **Entra ID → Registros de aplicativos**.
+
+3. Selecione **Novo registro**.
+
+4. Em **Tipos de conta com suporte**, selecione a opção correspondente:
+
+   - **Contas em qualquer diretório organizacional e contas pessoais da Microsoft:** utilize `common` como Tenant ID.
+   - **Somente contas deste diretório organizacional:** utilize o Tenant ID específico da organização.
+   - **Somente contas pessoais da Microsoft:** 
+utilize `consumers` como Tenant ID.
+
+5. Em **URI de redirecionamento**, selecione o tipo **Web** e configure:
+
+```text
+https://localhost:5001/
+```
+
+6. Selecione **Registrar**.
+
+7. Em **Visão geral**, copie o **ID do aplicativo (cliente)**.
+
+8. Abra **Certificados e segredos → Segredos do cliente**.
+
+9. Crie um novo segredo, defina a validade permitida pela organização e copie imediatamente o campo **Valor**.
+
+> Deve-se utilizar o valor do Client Secret, não o ID do segredo.
+
+10. Abra **Permissões de API → Adicionar uma permissão**.
+
+11. Selecione **Microsoft Graph → Permissões delegadas**.
+
+12. Pesquise e adicione:
+
+```text
+Files.ReadWrite.All
+```
+
+13. Conceda o consentimento necessário de acordo com as políticas da organização.
+
+#### Primeira autenticação
+
+Para realizar a primeira autenticação delegada, deve-se obter um código de autorização antes de executar o comando **Definir credenciais**.
+
+1. Crie a seguinte URL:
+
+```text
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&response_mode=query&scope=offline_access%20files.readwrite.all&state=12345
+```
+
+2. Substitua os seguintes valores:
+
+   - `{tenant}`: Tenant ID configurado para o aplicativo, `common` ou `consumers`.
+   - `{client_id}`: ID do aplicativo (cliente).
+   - `{redirect_uri}`: URI de redirecionamento configurada no Microsoft Entra, por exemplo, `https://localhost:5001/`.
+
+3. Abra a URL resultante no navegador.
+
+4. Inicie sessão com o usuário que utilizará o OneDrive e aceite as permissões solicitadas.
+
+5. Se a autenticação for bem-sucedida, o navegador redirecionará para uma URL semelhante a:
+
+```text
+https://localhost:5001/?code=<CODE>&state=12345
+```
+
+O navegador pode indicar que a página não está disponível. Isso é esperado; o código de autorização está dentro da URL.
+
+6. Copie somente o valor que aparece depois de `code=` e antes de `&state`.
+
+7. Configure o
+ comando **Definir credenciais**:
+
+```text
+auth_type:       delegated
+tenant:          {Tenant ID, common ou consumers}
+client_id:       {Application/Client ID}
+client_secret:   {valor do Client Secret}
+redirect_uri:    https://localhost:5001/
+code:            {código de autorização}
+user_id:         vazio
+target_drive_id: vazio
+session:         {identificador da sessão}
+```
+
+8. Execute o comando.
+
+Se a conexão for bem-sucedida, o resultado será:
+
+```text
+True
+```
+
+O módulo armazenará o `refresh_token` em:
+
+```text
+credentials.json
+```
+
+ou, se for utilizada uma sessão com nome:
+
+```text
+credentials_<session>.json
+```
+
+Nas execuções seguintes, o comando **Definir credenciais** deve ser mantido no início do processo. O módulo utilizará o arquivo existente para renovar o token automaticamente, portanto não será necessário gerar um novo código enquanto o `refresh_token` continuar válido.
+
+#### Reautenticação delegada
+
+A Microsoft pode revogar o `refresh_token` devido a uma alteração de 
+senha, políticas de segurança ou expiração da sessão.
+
+Quando isso ocorrer, o comando retornará:
+
+```json
+{
+  "error": "invalid_grant",
+  "error_description": "...",
+  "reauthorization_required": true,
+  "authorization_url": "https://login.microsoftonline.com/..."
+}
+```
+
+Deve-se abrir a nova `authorization_url`, concluir o início de sessão e executar novamente **Definir credenciais** com o novo código ou com a URL completa de redirecionamento.
+
+
+### Autenticação de aplicativo (app-only)
+
+A autenticação `Application` não precisa iniciar sessão com um usuário nem utiliza `refresh_token`, portanto as alterações de senha não afetam a conexão.
+
+
+#### Configuração no Microsoft Entra
+
+Pode-se utilizar um aplicativo existente ou registrar um novo.
+
+1. Acesse o [Microsoft Entra](https://entra.microsoft.com/) e selecione o tenant correto.
+
+2. Abra **Entra ID → Registros de aplicativos**.
+
+3. Selecione o aplicativo utilizado pelo processo.
+
+4. Abra **Permissões de API → Adicionar uma permissão**.
+
+
+5. Selecione **Microsoft Graph**.
+
+6. Selecione **Permissões de aplicativo**.
+
+> Não selecione “Permissões delegadas”.
+
+7. Pesquise e adicione:
+
+```text
+Files.ReadWrite.All
+```
+
+8. Selecione **Conceder consentimento do administrador para a organização** e confirme.
+
+9. Verifique se a permissão aparece da seguinte forma:
+
+```text
+API: Microsoft Graph
+Permissão: Files.ReadWrite.All
+Tipo: Application
+Status: Concedido para <organização>
+```
+
+10. Em **Visão geral**, copie:
+
+   - **ID do aplicativo (cliente):** será utilizado como `client_id`.
+   - **ID do diretório (tenant):** será utilizado como `tenant`.
+
+11. Abra **Certificados e segredos → Segredos do cliente**.
+
+12. Crie um Client Secret e copie imediatamente o campo **Valor**.
+
+> Se o aplicativo já tiver um Client Secret válido, ele poderá ser reutilizado somente se a organização conservar seu valor. O ID do segredo não substitui o valor.
+
+#### Configuração por usuário
+
+Para acessar o OneDrive de um usuário específico:
+
+```text
+
+auth_type:       application
+tenant:          {Tenant ID no formato GUID}
+client_id:       {Application/Client ID}
+client_secret:   {valor do Client Secret}
+user_id:         {UPN ou ID de objeto do usuário}
+target_drive_id: vazio
+redirect_uri:    vazio
+code:            vazio
+session:         {identificador da sessão}
+```
+
+O campo `user_id` pode conter:
+
+- O UPN exato do usuário, por exemplo, `robot@empresa.com`.
+- O ID de objeto do usuário obtido no Microsoft Entra.
+
+O usuário deve pertencer ao tenant utilizado para obter o token e ter um OneDrive ativo.
+
+#### Configuração por Drive ID
+
+Se o identificador direto do OneDrive for conhecido:
+
+```text
+auth_type:       application
+tenant:          {Tenant ID no formato GUID}
+client_id:       {Application/Client ID}
+client_secret:   {valor do Client Secret}
+user_id:         vazio
+target_drive_id: {Drive ID do OneDrive}
+redirect_uri:    vazio
+code:            vazio
+session:         {identificador da sessão}
+```
+
+É obrigatório fornecer 
+`user_id` ou `target_drive_id`.
+
+Se ambos os campos forem preenchidos, `target_drive_id` terá prioridade sobre `user_id`.
+
+Na modalidade `Application`, o arquivo local de credenciais não é criado nem consultado. O módulo solicita um novo `access_token` cada vez que **Definir credenciais** é executado.
+
+
+#### Uso de sessões
+
+O comando **Definir credenciais** deve ser executado uma vez no início do processo, antes de utilizar qualquer outro comando do OneDrive.
+
+É possível utilizar autenticação delegada e de aplicativo no mesmo processo por meio de sessões diferentes:
+
+```text
+Delegated:   session = OneDriveDelegated
+Application: session = OneDriveApplication
+```
+
+Se ambas as conexões utilizarem o mesmo nome de sessão, a segunda substituirá a primeira.
+
+
+#### Itens compartilhados
+
+O comando **Listar itens compartilhados** utiliza o endpoint `sharedWithMe` do Microsoft Graph.
+
+Este endpoint:
+
+- Oferece suporte apenas à autenticação delegada.
+- Não funciona com permissões do tipo 
+`Application`.
+- Está obsoleto, e a Microsoft informa que deixará de retornar dados depois de novembro de 2026.
+
+Na modalidade `Application`, os itens compartilhados devem ser acessados diretamente por meio de um `drive_id` e um `item_id` conhecidos.
+
+A limitação de `sharedWithMe` não impede listar, baixar, carregar ou modificar um item conhecido. Ela apenas impede a obtenção automática da coleção “Compartilhados comigo”.
+
+Para mais informações, consulte a [documentação oficial do Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/drive-sharedwithme?view=graph-rest-1.0).
+
+
+#### Considerações de segurança
+
+- Não compartilhe o Client Secret em capturas de tela, tickets ou arquivos de log. Utilize variáveis em vez do dado bruto nos campos do comando de conexão.
+- Registre a data de expiração do segredo e renove-o antes que expire.
+- Execute novamente **Definir credenciais** depois de modificar as permissões ou renovar o segredo.
 ## Descrição do comando
 
 ### Definir credenciais
@@ -46,12 +321,15 @@ Nota: O navegador NÃO carregará nenhuma página.
 Defina as credenciais para ter a API disponível
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
+|Tipo de autenticação|Delegada mantém o comportamento anterior. Aplicação usa client credentials e não depende da senha do usuário.|--- Select ---|
 |client_id|ID do cliente obtido na criação do aplicativo|Your client_id|
 |client_secret|Segredo do cliente obtido na criação do aplicativo|Your client_secret|
-|redirect_uri|URL de redirecionamento do aplicativo|http://localhost:5000|
-|code|Dados obtidos colocando a URL de autenticação. Verifique a documentação para mais informações|code|
+|redirect_uri|Somente modo Delegado. Deve corresponder exatamente à URI configurada no Azure.|http://localhost:5001|
+|code|Somente modo Delegado. Dados obtidos colocando a URL de autenticação. Verifique a documentação para mais informações|code|
 |tenant|Identificador do tenant ao qual você deseja se conectar|tenant|
-|Resultado|Variável para armazenar resultado. Se a conexão for bem sucedida retornará True, caso contrário será False|connection|
+|Usuário de destino (user_id)|Somente modo Aplicação. UPN ou Object ID do usuário cujo OneDrive será usado. Não é necessário quando target_drive_id é informado.|robot@test.com or object ID|
+|Drive de destino (target_drive_id)|Somente modo Aplicação. ID fixo do drive. Quando informado, tem prioridade sobre user_id.|OneDrive drive ID|
+|Resultado|Variável para armazenar o resultado. Retorna True ou um objeto com detalhes OAuth e a URL de reautorização.|connection|
 |session|Variável para armazenar o identificador da sessão. Use caso você queira se conectar a mais de uma conta ao mesmo tempo|session|
 
 ### Listar itens raiz

@@ -144,3 +144,5 @@ libs\Examples\
 /libs/Examples/
 #Credentials
 credentials*.json
+
+.DS_Store
